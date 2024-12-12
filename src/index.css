@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@200;300;400&display=swap');
+
+
+@font-face {
+  font-family: 'Alte Haas Grotesk';
+  src: url('public/fonts/AlteHaasGroteskRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Alte Haas Grotesk';
+  src: url('public/fonts/AlteHaasGroteskBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@layer components {
+  .text-custom {
+    @apply font-alte-haas tracking-[0.5px] text-sm;
+  }
+}
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: #000;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.newsreader {
+  font-family: Newsreader;
+}
+
+
