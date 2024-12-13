@@ -81,7 +81,7 @@ const ExhibitionsIndex = ({ handleReturn }) => {
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.2 }}
         >
-            <h2 className="font-newsreader italic mb-16">exhibitions</h2>
+            <h2 className="font-newsreader opacity-0 italic mb-16">exhibitions</h2>
 
             <div className="md:grid md:grid-cols-5 md:gap-16">
                 {/* Left Column - Exhibition List with Inline Details on Mobile */}
