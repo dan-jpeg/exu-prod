@@ -149,7 +149,7 @@ function WorksComponent() {
         },
         shifted: {
             opacity: 1,
-            y: window.innerWidth <= 768 ? '80vh' : '94vh',
+            y: window.innerWidth <= 768 ? '76vh' : '94vh',
             transition: {
                 duration: 0.4,
                 ease: [0.1, 0.1, 0.9, 0.9]
