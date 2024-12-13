@@ -95,7 +95,7 @@ function WorksComponent() {
 
     const [lastSection, setLastSection] = useState('exhibitions'); // T
     const [section, setSection] = useState(null);// rack last opened section
-    const [expanding   , setExpanding] = useState(true);
+    const [expanding, setExpanding] = useState(true);
     const [activeView, setActiveView] = useState('works');
     const [page, setPage] = useState('works');
     const [moreExpanded, setMoreExpanded] = useState(false);
@@ -124,9 +124,9 @@ function WorksComponent() {
                 if (expanding) {
                     setExpanding(false);
                     setSection(null);
-                   if (page === 'video' || page === 'drawing') {
-                       setPage('main')
-                   }
+                    if (page === 'video' || page === 'drawing') {
+                        setPage('main')
+                    }
                 } else {
                     setExpanding(true);
                     setSection(lastSection);
@@ -134,8 +134,6 @@ function WorksComponent() {
             }
         });
     };
-
-
 
 
     const containerVariants = {
@@ -163,19 +161,51 @@ function WorksComponent() {
     };
 
     useEffect(() => {
+        // Save initial body style
+        const originalStyle = window.getComputedStyle(document.body).position;
+        const originalOverflow = document.body.style.overflow;
+        const originalHeight = document.body.style.height;
+
+        const preventDefault = (e) => {
+            e.preventDefault();
+        };
+
         if (expanding) {
-            // Enable scrolling when expanded
-            document.body.style.overflow = 'hidden';
+            // Prevent scrolling on iOS Safari
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.height = '100vh';
+            document.body.style.top = `-${window.scrollY}px`;
+            document.body.style.overflow = 'hidden'; // Adding overflow:hidden
+            // Add touch event prevention (both touchmove and touchstart)
+            document.addEventListener('touchmove', preventDefault, {passive: false});
+            document.addEventListener('touchstart', preventDefault, {passive: false});
         } else {
-            // Disable scrolling when collapsed
-            document.body.style.overflow = 'auto';
+            // Re-enable scrolling
+            const scrollY = document.body.style.top;
+            document.body.style.position = originalStyle;
+            document.body.style.width = '';
+            document.body.style.height = originalHeight;
+            document.body.style.top = '';
+            document.body.style.overflow = originalOverflow;
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            // Remove touch event prevention
+            document.removeEventListener('touchmove', preventDefault);
+            document.removeEventListener('touchstart', preventDefault);
         }
 
-        // Cleanup
         return () => {
-            document.body.style.overflow = 'auto';
+            // Cleanup
+            document.body.style.position = originalStyle;
+            document.body.style.width = '';
+            document.body.style.height = originalHeight;
+            document.body.style.top = '';
+            document.body.style.overflow = originalOverflow;
+            document.removeEventListener('touchmove', preventDefault);
+            document.removeEventListener('touchstart', preventDefault);
         };
-    }, [expanding])
+    }, [expanding]);
+
 
     useEffect(() => {
         // Check if iOS

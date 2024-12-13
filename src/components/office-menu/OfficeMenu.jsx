@@ -20,7 +20,7 @@ const OfficeMenu = ({ handleReturn }) => {
     return (
         <>
             <span
-                className="fixed bottom-1 font-custom tracking-wide  font-alte-haas cursor-alias hover:opacity-20 left-1/2 transform -translate-x-1/2"
+                className="fixed   md:bottom-1 font-custom tracking-wide  font-alte-haas cursor-alias hover:opacity-20 left-1/2 transform -translate-x-1/2"
                 onClick={() => setMenuOpen(true)}
             >
                 edie xu
