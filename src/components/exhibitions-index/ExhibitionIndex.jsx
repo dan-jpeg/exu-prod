@@ -15,7 +15,7 @@ const ExhibitionDetails = ({ exhibition }) => (
                 <p className="text-xs italic">{exhibition.title}</p>
                 <p className="text-xs">{exhibition.location}</p>
             </div>
-            <p className="hidden: md:flex text-xs">{exhibition.date}</p>
+            <p className="hidden md:flex text-xs">{exhibition.date}</p>
             {exhibition.url && (
                 <p className="text-xs underline">
                     <a href={exhibition.url} target="_blank" rel="noopener noreferrer">
