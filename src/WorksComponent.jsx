@@ -160,49 +160,49 @@ function WorksComponent() {
         ease: [0.1, 0.1, 0.9, 0.9]
     };
 
+
     useEffect(() => {
-        // Save initial body style
+        // Save initial body styles
         const originalStyle = window.getComputedStyle(document.body).position;
         const originalOverflow = document.body.style.overflow;
         const originalHeight = document.body.style.height;
+        const originalTop = document.body.style.top;
 
+        // Prevent the default behavior of touchmove (vertical scroll)
         const preventDefault = (e) => {
             e.preventDefault();
         };
 
-        if (expanding) {
-            // Prevent scrolling on iOS Safari
+        if (!expanding) {
+            // Restore the body's styles and allow scrolling
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.height = '';
+            document.body.style.top = '';
+            document.body.style.overflow = ''; // Restore original overflow
+
+            // Remove touchmove listener to allow scrolling
+            document.removeEventListener('touchmove', preventDefault);
+        } else {
+            // Disable scrolling when expanding is false
             document.body.style.position = 'fixed';
             document.body.style.width = '100%';
             document.body.style.height = '100vh';
             document.body.style.top = `-${window.scrollY}px`;
-            document.body.style.overflow = 'hidden'; // Adding overflow:hidden
-            // Add touch event prevention (both touchmove and touchstart)
-            document.addEventListener('touchmove', preventDefault, {passive: false});
-            document.addEventListener('touchstart', preventDefault, {passive: false});
-        } else {
-            // Re-enable scrolling
-            const scrollY = document.body.style.top;
-            document.body.style.position = originalStyle;
-            document.body.style.width = '';
-            document.body.style.height = originalHeight;
-            document.body.style.top = '';
-            document.body.style.overflow = originalOverflow;
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
-            // Remove touch event prevention
-            document.removeEventListener('touchmove', preventDefault);
-            document.removeEventListener('touchstart', preventDefault);
+            document.body.style.overflow = 'hidden'; // This stops scrolling
+
+            // Add touchmove listener to block scrolling
+            document.addEventListener('touchmove', preventDefault, { passive: false });
         }
 
         return () => {
-            // Cleanup
+            // Cleanup on component unmount or dependency change
             document.body.style.position = originalStyle;
             document.body.style.width = '';
             document.body.style.height = originalHeight;
-            document.body.style.top = '';
+            document.body.style.top = originalTop;
             document.body.style.overflow = originalOverflow;
             document.removeEventListener('touchmove', preventDefault);
-            document.removeEventListener('touchstart', preventDefault);
         };
     }, [expanding]);
 
