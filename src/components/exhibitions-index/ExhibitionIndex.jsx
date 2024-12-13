@@ -1,118 +1,133 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {exhibitions2} from "./data2.js";
-import ContactsPage from "@/components/contacts-page/ContactsPage.jsx";
-import OfficeMenu from "@/components/office-menu/OfficeMenu.jsx";
+import { exhibitions2 } from "./data2.js";
 
+const ExhibitionDetails = ({ exhibition }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        className="space-y-6 md:pl-0"
+    >
+        <div className="space-y-4">
+            <div className=" hidden md:flex items-baseline justify-between">
+                <p className="text-xs italic">{exhibition.title}</p>
+                <p className="text-xs">{exhibition.location}</p>
+            </div>
+            <p className="text-xs">{exhibition.date}</p>
+            {exhibition.url && (
+                <p className="text-xs underline">
+                    <a href={exhibition.url} target="_blank" rel="noopener noreferrer">
+                        {exhibition.url}
+                    </a>
+                </p>
+            )}
+            {exhibition.header && (
+                <p className="text-xs pt-4">
+                    {exhibition.header}
+                </p>
+            )}
+        </div>
 
+        {exhibition.images?.[0] && (
+            <div className="w-full relative my-8">
+                <img
+                    src={exhibition.images[0]}
+                    alt={exhibition.title}
+                    className="w-full h-auto object-cover"
+                />
+            </div>
+        )}
 
-const ExhibitionsIndex = ({handleReturn}) => {
-    const [selectedExhibition, setSelectedExhibition] = useState(null);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [contactOpen, setContactOpen] = useState(false);
-
-
-    const closeContact = () => {
-        setMenuOpen(false);
-        setContactOpen(false)
-    }
-
-    const handleHomeClick = () => {
-        setMenuOpen(false);  // Close menu
-        setContactOpen(false);  // Close contact if open
-        handleReturn();  // Navigate home
-    }
-    return (
-        <motion.div
-            className="p-8 bg-white min-h-screen text-neutral-800"
-            initial={{opacity: 0, x: -20}}
-            animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x: 20}}
-            transition={{duration: 0.2}}
-        >
-            <h2 className="font-newsreader italic mb-16">exhibitions</h2>
-            <div className="space-y-8">
-                {exhibitions2.map((exhibition) => (
-                    <div key={exhibition.id}>
-                        <div
-                            className={`space-y-1 cursor-pointer transition-opacity duration-300
-                ${selectedExhibition && selectedExhibition !== exhibition.id ? 'opacity-30' : 'opacity-100 hover:underline'}`}
-                            onClick={() => setSelectedExhibition(selectedExhibition === exhibition.id ? null : exhibition.id)}
-                        >
-                            <p className="text-xs">{exhibition.date}</p>
-                            <p className="text-xs italic">{exhibition.title}</p>
-                            <p className="text-xs">{exhibition.category}</p>
-                            <p className="text-xs">{exhibition.location}</p>
-                        </div>
-
-                        <AnimatePresence>
-                            {selectedExhibition === exhibition.id && (
-                                <motion.div
-                                    initial={{height: 0, opacity: 1}}
-                                    animate={{height: "auto", opacity: 1}}
-                                    exit={{height: 0, opacity: 1}}
-                                    transition={{duration: 0.2}}
-                                    className="overflow-hidden"
-                                >
-                                    <div className="pt-4 pb-8 space-y-4">
-                                        {exhibition.header && (
-                                            <p className="text-xs italic">{exhibition.header}</p>
-                                        )}
-                                        {exhibition.subheader && (
-                                            <p className="text-xs">{exhibition.subheader}</p>
-                                        )}
-                                        {exhibition.textContent && (
-                                            <div className="text-xs leading-relaxed">{exhibition.textContent}</div>
-                                        )}
-                                        {exhibition.workIncluded && exhibition.workIncluded.length > 0 && (
-                                            <div className="space-y-2">
-                                                <p className="text-xs font-medium">Works included:</p>
-                                                {exhibition.workIncluded.map((work, index) => (
-                                                    <div key={index} className="text-xs">
-                                                        <p className="italic">{work.title}, {work.year}</p>
-                                                        <p>{work.dimensions}</p>
-                                                        <p>{work.material}</p>
-                                                        {work.description && <p className="mt-1">{work.description}</p>}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+        {exhibition.workIncluded?.length > 0 && (
+            <div className="space-y-6 mt-8">
+                {exhibition.workIncluded.map((work, index) => (
+                    <div key={index} className="text-xs space-y-1">
+                        <p className="italic">{work.title}, {work.year}</p>
+                        <p>{work.dimensions}</p>
+                        <p>{work.material}</p>
+                        {work.description && (
+                            <p className="mt-4">{work.description}</p>
+                        )}
                     </div>
                 ))}
             </div>
-            {/*<span className={`fixed bottom-1 font-newsreader cursor-alias hover:opacity-20  left-1/2 transform -translate-x-1/2`}*/}
-            {/*      onClick={() => setMenuOpen(true)}>Office of Edie Xu</span>*/}
-            {/*{menuOpen && (*/}
-            {/*    <div*/}
-            {/*        className="fixed font-newsreader inset-0 bg-neutral-50 bg-opacity-70 flex items-center justify-center z-50"*/}
-            {/*    >*/}
-            {/*        <div className="text-neutral-800 cursor-none text-center text-lg">*/}
-            {/*            <p className="group cursor-zoom-in  hover:opacity-25"*/}
-            {/*               onClick={() => setContactOpen(true)}>contact</p>*/}
-            {/*            <p className="group cursor-zoom-in hover:opacity-25">cv</p>*/}
-            {/*            <p className="group cursor-zoom-out  hover:opacity-25" onClick={handleHomeClick}>home</p>*/}
-            {/*            <button*/}
-            {/*                onClick={() => closeContact()}*/}
+        )}
 
-            {/*                className="mt- px-1 py-2 cursor-crosshair hover:opacity-10  rounded"*/}
-            {/*            >*/}
-            {/*                x*/}
-            {/*            </button>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
+        {exhibition.textContent && (
+            <div className="text-xs leading-relaxed whitespace-pre-line mt-8">
+                {exhibition.textContent}
+            </div>
+        )}
+    </motion.div>
+);
 
-            {/*)}*/}
-            {/*{contactOpen && (*/}
+const ExhibitionsIndex = ({ handleReturn }) => {
+    const [selectedExhibition, setSelectedExhibition] = useState(null);
 
-            {/*   <ContactsPage closeContact={closeContact} />*/}
+    const selectExhibition = (exhibitionId) => {
+        const exhibition = exhibitionId
+            ? exhibitions2.find(e => e.id === exhibitionId)
+            : null;
+        setSelectedExhibition(exhibition);
+    };
 
-            {/*)}*/}
+    return (
+        <motion.div
+            className="p-8 bg-white text-neutral-800 min-h-screen"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.2 }}
+        >
+            <h2 className="font-newsreader italic mb-16">exhibitions</h2>
 
-            <OfficeMenu handleReturn={handleReturn}/>
+            <div className="md:grid md:grid-cols-5 md:gap-16">
+                {/* Left Column - Exhibition List with Inline Details on Mobile */}
+                <div className=" md: col-span-2 space-y-8">
+                    {exhibitions2.map((exhibition) => (
+                        <div key={exhibition.id}>
+                            <div
+                                className={`transition-opacity duration-300 ${
+                                    selectedExhibition && selectedExhibition.id !== exhibition.id
+                                        ? 'opacity-30'
+                                        : 'opacity-100'
+                                }`}
+                            >
+                                <div
+                                    className="space-y-1 cursor-pointer hover:underline"
+                                    onClick={() => selectExhibition(
+                                        selectedExhibition?.id === exhibition.id ? null : exhibition.id
+                                    )}
+                                >
+                                    <div className="flex items-baseline md:flex-col justify-between">
+                                        <p className="text-xs italic">{exhibition.title}</p>
+                                        <p className="text-xs">{exhibition.location}</p>
+                                    </div>
+                                    <p className="text-xs">{exhibition.date}</p>
+                                </div>
+                            </div>
+
+                            {/* Mobile Details */}
+                            <div className="md:hidden">
+                                <AnimatePresence mode="wait">
+                                    {selectedExhibition?.id === exhibition.id && (
+                                        <ExhibitionDetails exhibition={selectedExhibition} />
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Desktop Right Column - Selected Exhibition Details */}
+                <div className="hidden md:col-span-3 md:block mt-8 md:mt-0">
+                    <AnimatePresence mode="wait">
+                        {selectedExhibition && <ExhibitionDetails exhibition={selectedExhibition} />}
+                    </AnimatePresence>
+                </div>
+            </div>
         </motion.div>
     );
 };

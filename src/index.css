@@ -15,6 +15,16 @@
   font-style: normal;
 }
 
+.safe-area-padding {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Or for fixed elements at bottom */
+.fixed-bottom {
+  bottom: env(safe-area-inset-bottom);
+}
+
+
 @layer components {
   .text-custom {
     @apply font-alte-haas tracking-[0.5px] text-sm;

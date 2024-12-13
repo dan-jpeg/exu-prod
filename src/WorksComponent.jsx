@@ -149,7 +149,7 @@ function WorksComponent() {
         },
         shifted: {
             opacity: 1,
-            y: "94vh",
+            y: window.innerWidth <= 768 ? '90vh' : '94vh',
             transition: {
                 duration: 0.4,
                 ease: [0.1, 0.1, 0.9, 0.9]
@@ -177,6 +177,15 @@ function WorksComponent() {
         };
     }, [expanding])
 
+    useEffect(() => {
+        // Check if iOS
+        const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        // Set CSS variable for shift amount
+        document.documentElement.style.setProperty(
+            '--shift-amount',
+            iOS ? '90vh' : '94vh'
+        );
+    }, []);
 
     const [activeWork, setActiveWork] = useState(selectedWorks[0]);
     const containerRef = useRef(null);
