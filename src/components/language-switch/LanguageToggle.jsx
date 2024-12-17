@@ -13,7 +13,7 @@ const LanguageSwitcher = ({ expanding }) => {
     const hoverVariants = {
         initial: {
             scale: 1,
-            opacity: expanding ? 0.2 : 0.3
+            opacity: expanding ? 0.6 : 0.7
         },
         hover: {
             scale: 1.1,
@@ -41,10 +41,10 @@ const LanguageSwitcher = ({ expanding }) => {
                 {expanding && (
                     <motion.div
                         onClick={handleLanguageChange}
-                        className="fixed right-8 z-50 font-newsreader tracking-[-0.51px] cursor-pointer text-[12px] text-white"
-                        style={{ top: 'calc(-92vh + 1rem)' }}
+                        className="fixed right-8 z-50 font-newsreader tracking-[-0.51px] cursor-pointer text-[14px] text-white"
+                        style={{ top: 'calc(-75vh + 1rem)' }}
                         initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 0.2, y: 0 }}
+                        animate={{ opacity: 0.3, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{
                             duration: 0.8,
@@ -55,7 +55,7 @@ const LanguageSwitcher = ({ expanding }) => {
                     >
                         <motion.span>
                             {currentLanguage === 'en' ? (
-                                <span className="text-[12px] transform -translate-y-2">en</span>
+                                <span className="text-[16px] transform -translate-y-2">ENG</span>
                             ) : (
                                 <span>中文</span>
                             )}
@@ -70,7 +70,7 @@ const LanguageSwitcher = ({ expanding }) => {
                         className="fixed right-8 bottom-2 z-50 font-newsreader tracking-[-0.51px] cursor-pointer text-[12px] text-black"
                         onClick={handleLanguageChange}
                         initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 0.3, y: 0 }}
+                        animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{
                             duration: 0.8,

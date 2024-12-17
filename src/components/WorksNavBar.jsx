@@ -45,9 +45,9 @@ const WorksNavBar = ({
         <>
             {/* Mobile Navigation */}
             <div className="md:hidden flex justify-between items-center bg-white w-full px-8 py-4 z-20 fixed top-0">
-              <OfficeMenu handleReturn={handleReturn} expanding={expanding}/>
+                <OfficeMenu handleReturn={handleReturn} expanding={expanding}/>
 
-                <div className="w-6 flex max-w-md justify-center">
+                <div className="absolute left-1/2 -translate-x-1/2">
                     <motion.img
                         src={arrow}
                         onClick={handleReturn}
