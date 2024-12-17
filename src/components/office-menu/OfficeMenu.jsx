@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ContactsPage from "@/components/contacts-page/ContactsPage.jsx";
 
-const OfficeMenu = ({ handleReturn }) => {
+const OfficeMenu = ({ handleReturn, expanding }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [contactOpen, setContactOpen] = useState(false);
 
@@ -17,22 +17,31 @@ const OfficeMenu = ({ handleReturn }) => {
         if (handleReturn) handleReturn();
     };
 
+    const openAndExpand = () => {
+        if (expanding) {
+            handleReturn();
+        }
+
+        setMenuOpen(true);
+
+    }
+
     return (
         <>
-            <span
-                className="fixed   md:bottom-1 font-custom tracking-wide  font-alte-haas cursor-alias hover:opacity-20 left-1/2 transform -translate-x-1/2"
-                onClick={() => setMenuOpen(true)}
-            >
-                edie xu
+           <span
+               className="text-custom cursor-pointer" // Matched to the original nav styling
+               onClick={openAndExpand}
+           >
+                Edie Xu
             </span>
 
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed font-newsreader inset-0 bg-neutral-50 bg-opacity-70 flex items-center justify-center z-50"
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
+                        className="fixed  inset-0 bg-neutral-50 bg-opacity-70 flex items-center justify-center z-50"
                     >
                         <div className="text-neutral-800 cursor-none text-center text-lg">
                             <p
@@ -63,7 +72,7 @@ const OfficeMenu = ({ handleReturn }) => {
 
             <AnimatePresence>
                 {contactOpen && (
-                    <ContactsPage closeContact={closeContact} />
+                    <ContactsPage closeContact={closeContact}/>
                 )}
             </AnimatePresence>
         </>

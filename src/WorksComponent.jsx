@@ -13,82 +13,176 @@ import VideoPage from "./components/videos-and-drawings/VideoPage.jsx";
 import DrawingPage from "./components/videos-and-drawings/DrawingPage.jsx";
 import MoreMenu from "@/components/MoreMenu.jsx";
 import OfficeMenu from "@/components/office-menu/OfficeMenu.jsx";
+import { Menu, X } from 'lucide-react';
+import WorksNavBar from "./components/WorksNavBar.jsx";
 
-const WorksNavBar = ({
-                         expanding,
-                         handleReturn,
-                         arrowAnimationConfig,
-                         activeView,
-                         setActiveView,
-                         page,
-                         setPage,
-
-                     }) => {
-
-    const handleNavigate = (activeView) => {
-        setActiveView(activeView);
-        handleReturn()
-    }
-
-    const handleWorksClick = () => {
-
-        if (!expanding) {
-            setActiveView('works');
-        } else {
-            handleNavigate('works');
-        }
-
-        if (page === 'drawing' || page === 'video') {
-            setPage('main');
-        }
-
-    };
-
-
-    return (
-        <motion.div
-            className="flex justify-between items-center bg-white w-full px-8 py-4 z-10 fixed -top-1"
-        >
-            <div className="w-32 flex justify-start">
-                <motion.div
-                    className="cursor-pointer"
-                    whileHover={{ opacity: 0.6 }}
-                    onClick={!expanding ? () => setActiveView('exhibitions') : () => handleNavigate('exhibitions')}
-                >
-                    <span
-                        className={`text-custom text-black ${activeView === 'exhibitions' ? 'underline underline-offset-4' : ''}`}>
-                    Exhibitions
-                    </span>
-                </motion.div>
-            </div>
-
-            <div className="w-6 flex max-w-md justify-center">
-                <motion.img
-                    src={arrow}
-                    onClick={handleReturn}
-                    className="cursor-pointer w-5 h-5 hover:opacity-60 transition-opacity"
-                    animate={{
-                        rotate: expanding ? 180 : 0,
-                    }}
-                    transition={arrowAnimationConfig}
-                    alt="return"
-                />
-            </div>
-
-            <div className="w-32 flex justify-end">
-                <motion.div
-                    className="cursor-pointer"
-                    whileHover={{ opacity: 0.6 }}
-                    onClick={handleWorksClick}
-                >
-                    <span className={`text-custom text-black ${activeView === 'works' ? 'underline underline-offset-4' : ''}`}>
-                        Works
-                    </span>
-                </motion.div>
-            </div>
-        </motion.div>
-    );
-};
+// const WorksNavBar = ({
+//                          expanding,
+//                          handleReturn,
+//                          arrowAnimationConfig,
+//                          activeView,
+//                          setActiveView,
+//                          page,
+//                          setPage,
+//                          setMenuOpen
+//                      }) => {
+//     const [hamburgerOpen, setHamburgerOpen] = useState(false);
+//
+//     const handleNavigate = (view) => {
+//         setActiveView(view);
+//         handleReturn();
+//         setHamburgerOpen(false);
+//     };
+//
+//     const handleWorksClick = () => {
+//         if (!expanding) {
+//             setActiveView('works');
+//         } else {
+//             handleNavigate('works');
+//         }
+//
+//         if (page === 'drawing' || page === 'video') {
+//             setPage('main');
+//         }
+//     };
+//
+//     // Mobile menu overlay animation variants
+//     const menuVariants = {
+//         closed: {
+//             opacity: 0,
+//             y: "100%",
+//             transition: {
+//                 duration: 0.3,
+//                 ease: "easeInOut"
+//             }
+//         },
+//         open: {
+//             opacity: 1,
+//             y: 0,
+//             transition: {
+//                 duration: 0.3,
+//                 ease: "easeInOut"
+//             }
+//         }
+//     };
+//
+//     return (
+//         <>
+//             {/* Desktop Navigation */}
+//             <div className="hidden md:flex justify-between items-center bg-white w-full px-8 py-4 z-10 fixed -top-1">
+//                 <div className="w-32 flex justify-start">
+//                     <motion.div
+//                         className="cursor-pointer"
+//                         whileHover={{ opacity: 0.6 }}
+//                         onClick={!expanding ? () => setActiveView('exhibitions') : () => handleNavigate('exhibitions')}
+//                     >
+//                         <span className={`text-custom text-black ${activeView === 'exhibitions' ? 'underline underline-offset-4' : ''}`}>
+//                             Exhibitions
+//                         </span>
+//                     </motion.div>
+//                 </div>
+//
+//                 <div className="w-6 flex max-w-md justify-center">
+//                     <motion.img
+//                         src={arrow}
+//                         onClick={handleReturn}
+//                         className="cursor-pointer w-5 h-5 hover:opacity-60 transition-opacity"
+//                         animate={{
+//                             rotate: expanding ? 180 : 0,
+//                         }}
+//                         transition={arrowAnimationConfig}
+//                         alt="return"
+//                     />
+//                 </div>
+//
+//                 <div className="w-32 flex justify-end">
+//                     <motion.div
+//                         className="cursor-pointer"
+//                         whileHover={{ opacity: 0.6 }}
+//                         onClick={handleWorksClick}
+//                     >
+//                         <span className={`text-custom text-black ${activeView === 'works' ? 'underline underline-offset-4' : ''}`}>
+//                             Works
+//                         </span>
+//                     </motion.div>
+//                 </div>
+//             </div>
+//
+//             {/* Mobile Navigation */}
+//             <div className="md:hidden flex justify-between items-center bg-white w-full px-8 py-4 z-10 fixed -top-1">
+//                 <span
+//                     className="text-custom cursor-pointer"
+//                     onClick={() => setMenuOpen(true)}
+//                 >
+//                     Edie Xu
+//                 </span>
+//
+//                 <button
+//                     onClick={() => setHamburgerOpen(!hamburgerOpen)}
+//                     className="text-black focus:outline-none"
+//                 >
+//                     {hamburgerOpen ? <X size={24} /> : <Menu size={24} />}
+//                 </button>
+//             </div>
+//
+//             {/* Mobile Menu Overlay */}
+//             <AnimatePresence>
+//                 {hamburgerOpen && (
+//                     <motion.div
+//                         className="fixed bottom-16 left-0 right-0 bg-white z-50 h-[calc(100vh-4rem)] md:hidden"
+//                         variants={menuVariants}
+//                         initial="closed"
+//                         animate="open"
+//                         exit="closed"
+//                     >
+//                         <div className="flex justify-between items-center px-8 py-4">
+//                             <span className="text-custom">Edie Xu</span>
+//                             <button
+//                                 onClick={() => setHamburgerOpen(false)}
+//                                 className="text-black focus:outline-none"
+//                             >
+//                                 <X size={24} />
+//                             </button>
+//                         </div>
+//
+//                         <div className="flex flex-col items-end px-8 pt-4 pb-20 space-y-6 font-newsreader text-lg">
+//                             <button
+//                                 className="hover:opacity-60"
+//                                 onClick={() => handleNavigate('works')}
+//                             >
+//                                 Works
+//                             </button>
+//                             <button
+//                                 className="hover:opacity-60"
+//                                 onClick={() => handleNavigate('exhibitions')}
+//                             >
+//                                 Exhibitions
+//                             </button>
+//                             <button
+//                                 className="hover:opacity-60"
+//                                 onClick={() => {
+//                                     setPage('video');
+//                                     setHamburgerOpen(false);
+//                                 }}
+//                             >
+//                                 Performance
+//                             </button>
+//                             <button
+//                                 className="hover:opacity-60"
+//                                 onClick={() => {
+//                                     setPage('drawing');
+//                                     setHamburgerOpen(false);
+//                                 }}
+//                             >
+//                                 Paper
+//                             </button>
+//                         </div>
+//                     </motion.div>
+//                 )}
+//             </AnimatePresence>
+//         </>
+//     );
+// };
 
 
 function WorksComponent() {
@@ -383,16 +477,18 @@ function WorksComponent() {
     return (
         <>
             {/* Fixed video background - always present */}
-            <div className="fixed inset-0 -z-10">
-                <video
-                    className="absolute inset-0 w-full h-full object-contain"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    src="https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video.mp4"
-                />
-            </div>
+            {/*<div className="fixed inset-0 -z-10">*/}
+            {/*    <video*/}
+            {/*        className="absolute inset-0 w-full h-full object-contain"*/}
+            {/*        autoPlay*/}
+            {/*        muted*/}
+            {/*        loop*/}
+            {/*        playsInline*/}
+            {/*        src="https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video.mp4"*/}
+            {/*    />*/}
+            {/*</div>*/}
+
+            <VideoBackground />
 
             {/* Main content container */}
             <motion.div

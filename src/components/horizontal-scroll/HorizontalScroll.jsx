@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const ImageContainer = ({ url }) => (
-    <div className="w-[80vw] lg:w-[60vw] max-w-screen-md flex-shrink-0">
+    <div className="w-[80vw] lg:w-[60vw] xl:w-[50vw]  max-w-screen-sm flex-shrink-0">
         <div className="aspect-[4/3] w-full max-h-[50vh] relative">
             <img
                 src={url}
