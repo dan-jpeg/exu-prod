@@ -41,9 +41,9 @@ const OfficeMenu = ({ handleReturn, expanding }) => {
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}
-                        className="fixed  inset-0 bg-neutral-50 bg-opacity-70 flex items-center justify-center z-50"
+                        className="fixed font-bold text-5xl inset-0 bg-neutral-50 bg-opacity-100 flex items-center justify-center z-50"
                     >
-                        <div className="text-neutral-800 cursor-none text-center text-lg">
+                        <div className="text-neutral-800 cursor-none text-center ">
                             <p
                                 className="group cursor-zoom-in hover:opacity-25"
                                 onClick={() => setContactOpen(true)}
