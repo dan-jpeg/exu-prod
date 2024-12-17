@@ -16,8 +16,9 @@ const WorksNavBar = ({
                      }) => {
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-    const handleNavigate = (view) => {
+    const handleNavigate = (view, page = 'main') => {
         setActiveView(view);
+        setPage(page);
 
         if (expanding) {
             handleReturn();
@@ -27,14 +28,16 @@ const WorksNavBar = ({
     };
 
     const handleWorksClick = () => {
-        if (!expanding) {
-            setActiveView('works');
-        } else {
-            handleNavigate('works');
-        }
-
+        // First handle page state if we're in drawing/video
         if (page === 'drawing' || page === 'video') {
             setPage('main');
+        }
+
+        // Then handle the navigation
+        if (expanding) {
+            handleNavigate('works');
+        } else {
+            setActiveView('works');
         }
     };
 
@@ -69,7 +72,7 @@ const WorksNavBar = ({
             <AnimatePresence>
                 {hamburgerOpen && (
                     <motion.div
-                        className={`absolute ${!expanding ? 'top-16 z-30' : '-top-[150px]'} left-0 right-0 bg-neutral-100 z-30 border-t border-neutral-100`}
+                        className={`fixed ${!expanding ? 'top-16 z-30' : '-top-[150px]'} left-0 right-0 bg-neutral-100 z-30 border-t border-neutral-100`}
                         initial={{y: expanding ? "50%" : "-50%", opacity: 0}}
                         animate={{y: 0, opacity: 1}}
                         exit={{y: expanding ? "50%" : "-50%", opacity: 0}}
@@ -89,20 +92,14 @@ const WorksNavBar = ({
                                 Exhibitions
                             </button>
                             <button
-                                className="text-custom  hover:opacity-60"
-                                onClick={() => {
-                                    setPage('video');
-                                    setHamburgerOpen(false);
-                                }}
+                                className="text-custom hover:opacity-60"
+                                onClick={() => handleNavigate('works', 'video')}
                             >
                                 Performance
                             </button>
                             <button
-                                className="text-custom  hover:opacity-60"
-                                onClick={() => {
-                                    setPage('drawing');
-                                    setHamburgerOpen(false);
-                                }}
+                                className="text-custom hover:opacity-60"
+                                onClick={() => handleNavigate('works', 'drawing')}
                             >
                                 Paper
                             </button>
