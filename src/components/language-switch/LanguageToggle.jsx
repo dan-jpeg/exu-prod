@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const LanguageSwitcher = ({ expanding }) => {
-    const [currentLanguage, setCurrentLanguage] = useState('en');
+    const [currentLanguage, setCurrentLanguage] = useState('cn');
     const [isHovered, setIsHovered] = useState(false);
 
     const handleLanguageChange = () => {
@@ -41,8 +41,8 @@ const LanguageSwitcher = ({ expanding }) => {
                 {expanding && (
                     <motion.div
                         onClick={handleLanguageChange}
-                        className="fixed right-8 z-50 font-newsreader tracking-[-0.51px] cursor-pointer text-[14px] text-white"
-                        style={{ top: 'calc(-75vh + 1rem)' }}
+                        className="fixed right-8 z-50 font-alte tracking-[-0.51px] cursor-pointer text-[14px] text-white"
+                        style={{ top: 'calc(-92vh + 1rem)' }}
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 0.3, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}

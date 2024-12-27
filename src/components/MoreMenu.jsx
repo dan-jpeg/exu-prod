@@ -38,13 +38,13 @@ const MoreMenu = ({ onVideoClick, onDrawingClick }) => {
                 }`}>
                     <button
                         onClick={onVideoClick}
-                        className="font-alte-haas text-xl my-0 py-0  tracking-[-0.51px] hover:opacity-25 transition-opacity cursor-pointer"
+                        className="font-alte-haas  my-0 py-0  tracking-[-0.51px] hover:opacity-25 transition-opacity cursor-pointer"
                     >
                         Performance
                     </button>
                     <button
                         onClick={onDrawingClick}
-                        className="font-alte-haas text-xl my-0 py-0  tracking-[-0.51px] hover:opacity-25 transition-opacity cursor-pointer"
+                        className="font-alte-haas  my-0 py-0  tracking-[-0.51px] hover:opacity-25 transition-opacity cursor-pointer"
                     >
                         Paper
                     </button>

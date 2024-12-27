@@ -12,9 +12,11 @@ const WorksNavBar = ({
                          setActiveView,
                          page,
                          setPage,
-                         setMenuOpen
+                         setMenuOpen,
+                        setHamburgerOpen,
+                        hamburgerOpen
                      }) => {
-    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+    
 
     const handleNavigate = (view, page = 'main') => {
         setActiveView(view);
@@ -51,7 +53,7 @@ const WorksNavBar = ({
                     <motion.img
                         src={arrow}
                         onClick={handleReturn}
-                        className="cursor-pointer w-5 h-5 hover:opacity-60 transition-opacity"
+                        className={`cursor-pointer w-5 h-5  ${hamburgerOpen ? "opacity-0" : "opacity-100"} hover:opacity-60 transition-opacity`}
                         animate={{
                             rotate: expanding ? 180 : 0,
                         }}
@@ -117,7 +119,7 @@ const WorksNavBar = ({
                         onClick={!expanding ? () => setActiveView('exhibitions') : () => handleNavigate('exhibitions')}
                     >
                         <span
-                            className={`text-custom text-black ${activeView === 'exhibitions' ? 'underline underline-offset-4' : ''}`}>
+                            className={`text-custom  text-black ${activeView === 'exhibitions' ? 'underline underline-offset-4' : ''}`}>
                             Exhibitions
                         </span>
                     </motion.div>
@@ -127,7 +129,7 @@ const WorksNavBar = ({
                     <motion.img
                         src={arrow}
                         onClick={handleReturn}
-                        className="cursor-pointer w-5 h-5 hover:opacity-60 transition-opacity"
+                        className={`cursor-pointer w-5 h-5 hover:opacity-60 ${hamburgerOpen ? "opacity-0" : "opacity-100"}  transition-opacity`}
                         animate={{
                             rotate: expanding ? 180 : 0,
                         }}
