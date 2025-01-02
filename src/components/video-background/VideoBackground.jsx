@@ -5,7 +5,8 @@ const VideoBackground = () => {
     const [progress, setProgress] = useState(0);
     const videoRef = useRef(null);
 
-    const videoUrl = "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video.mp4";
+    // const videoUrl = "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video.mp4";
+    const videoUrl = "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp-vid-qhd-webm.webm";
 
     useEffect(() => {
         const video = videoRef.current;
