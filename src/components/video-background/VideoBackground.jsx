@@ -4,7 +4,7 @@ const VideoBackground = () => {
     const [loading, setLoading] = useState(true);
     const videoRef = useRef(null);
 
-    const videoUrlMp4 = "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video.mp4";
+    const videoUrlMp4 = "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video-safari-hd.mp4";
     const videoUrlWebM = "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp-vid-qhd-webm.webm";
 
     // Helper function to check if the browser supports WebM
