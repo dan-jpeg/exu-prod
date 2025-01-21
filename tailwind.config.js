@@ -8,7 +8,11 @@ export default {
     extend: {
       fontFamily: {
         newsreader: ['Newsreader', 'serif'],
-        'alte-haas': ['Alte Haas Grotesk', 'sans-serif']
+        'alte-haas': ['Alte Haas Grotesk', 'sans-serif'],
+        'davinci': ['TRJN DaVinci', 'serif']
+      },
+      letterSpacing: {
+        '-2p': '-0.02em', // Custom tracking value for -2%
       }
     },
   },

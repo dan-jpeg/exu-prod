@@ -55,11 +55,11 @@ const ExhibitionDetails = ({ exhibition }) => (
             </div>
         )}
 
-        {exhibition.textContent && (
-            <div className="text-xs leading-relaxed whitespace-pre-line mt-8">
-                {exhibition.textContent}
-            </div>
-        )}
+        {/*{exhibition.textContent && (*/}
+        {/*    <div className="text-xs leading-relaxed whitespace-pre-line mt-8">*/}
+        {/*        {exhibition.textContent}*/}
+        {/*    </div>*/}
+        {/*)}*/}
     </motion.div>
 );
 
@@ -75,17 +75,16 @@ const ExhibitionsIndex = ({ handleReturn }) => {
 
     return (
         <motion.div
-            className="p-8 bg-white text-neutral-800 min-h-screen"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 0.2 }}
+            className="pt-20 mx-8 bg-white text-neutral-800 min-h-screen"
+            initial={{opacity: 0, x: -20}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x: 20}}
+            transition={{duration: 0.2}}
         >
-            <h2 className="font-newsreader opacity-0 italic mb-16">exhibitions</h2>
 
             <div className="md:grid md:grid-cols-5 md:gap-16">
                 {/* Left Column - Exhibition List with Inline Details on Mobile */}
-                <div className=" md: col-span-2 space-y-8">
+                <div className=" md:col-span-2 space-y-8">
                     {exhibitions2.map((exhibition) => (
                         <div key={exhibition.id}>
                             <div
@@ -101,11 +100,12 @@ const ExhibitionsIndex = ({ handleReturn }) => {
                                         selectedExhibition?.id === exhibition.id ? null : exhibition.id
                                     )}
                                 >
-                                    <div className="flex items-baseline md:flex-col justify-between">
+                                    <div className="flex space-y-1 items-baseline md:flex-col justify-between">
                                         <p className="text-xs italic">{exhibition.title}</p>
                                         <p className="text-xs">{exhibition.location}</p>
+                                        <p className="text-xs">{exhibition.date}</p>
                                     </div>
-                                    <p className="text-xs">{exhibition.date}</p>
+
                                 </div>
                             </div>
 
@@ -113,7 +113,7 @@ const ExhibitionsIndex = ({ handleReturn }) => {
                             <div className="md:hidden">
                                 <AnimatePresence mode="wait">
                                     {selectedExhibition?.id === exhibition.id && (
-                                        <ExhibitionDetails exhibition={selectedExhibition} />
+                                        <ExhibitionDetails exhibition={selectedExhibition}/>
                                     )}
                                 </AnimatePresence>
                             </div>
@@ -124,10 +124,19 @@ const ExhibitionsIndex = ({ handleReturn }) => {
                 {/* Desktop Right Column - Selected Exhibition Details */}
                 <div className="hidden md:col-span-3 md:block mt-8 md:mt-0">
                     <AnimatePresence mode="wait">
-                        {selectedExhibition && <ExhibitionDetails exhibition={selectedExhibition} />}
+                        {selectedExhibition && <ExhibitionDetails exhibition={selectedExhibition}/>}
                     </AnimatePresence>
                 </div>
+
+
             </div>
+            {/*<motion.div className="fixed bottom-2 w-screen">*/}
+            {/*    <div className="flex flex-row w-full justify-center items-center">*/}
+            {/*        <span> EXHIBITION DATE</span>*/}
+            {/*        <span> EXHIBITION TITLE</span>*/}
+            {/*        <span> EXHIBITION LOCATION </span>*/}
+            {/*    </div>*/}
+            {/*</motion.div>*/}
         </motion.div>
     );
 };

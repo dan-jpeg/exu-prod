@@ -1,37 +1,72 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
-// The FullscreenImage component handles the expanded view of an image
-const FullscreenImage = ({ url, onClose }) => (
-    <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center"
-        onClick={onClose}
-    >
-        <div className="w-full h-full p-4 flex items-center justify-center cursor-zoom-out">
-            <img
-                src={url}
-                alt=""
-                className="max-w-full max-h-full object-contain"
-                // onClick={(e) => e.stopPropagation()} // Prevents image click from closing
-            />
-        </div>
-    </motion.div>
-);
+// Enhanced FullscreenImage component with navigation
+const FullscreenImage = ({ url, onClose, onNext, onPrev, hasNext, hasPrev }) => {
+    const handleContainerClick = (e) => {
+        // Only handle clicks directly on the container, not its children
+        if (e.target === e.currentTarget) {
+            const { clientX } = e;
+            const { width } = e.currentTarget.getBoundingClientRect();
+            const clickPosition = clientX / width;
 
-// ImageContainer now includes click handling for fullscreen toggle
-const ImageContainer = ({ url, onImageClick }) => (
-    <div className="w-[80vw] lg:w-[60vw] xl:w-[50vw] max-w-screen-sm flex-shrink-0">
-        <div
-            className="aspect-[4/3] w-full max-h-[50vh] relative cursor-zoom-in"
-            onClick={() => onImageClick(url)}
+            if (clickPosition < 0.25) {
+                if (hasPrev) onPrev();
+            } else if (clickPosition > 0.75) {
+                if (hasNext) onNext();
+            } else {
+                onClose();
+            }
+        }
+    };
+
+    const handleMouseMove = (e) => {
+        // Only change cursor if hovering on the container
+        if (e.target === e.currentTarget) {
+            const { clientX, currentTarget } = e;
+            const { width } = currentTarget.getBoundingClientRect();
+            const position = clientX / width;
+
+            if (position < 0.25 && hasPrev) {
+                currentTarget.style.cursor = 'w-resize';
+            } else if (position > 0.75 && hasNext) {
+                currentTarget.style.cursor = 'e-resize';
+            } else {
+                currentTarget.style.cursor = 'zoom-out';
+            }
+        }
+    };
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center"
+            onClick={handleContainerClick}
+            onMouseMove={handleMouseMove}
         >
             <img
                 src={url}
                 alt=""
-                className="absolute inset-0 w-full h-full object-contain"
+                className="max-w-full max-h-full object-contain"
+                style={{ pointerEvents: 'none' }}
+            />
+        </motion.div>
+    );
+};
+
+// ImageContainer component remains the same
+const ImageContainer = ({ url, onImageClick }) => (
+    <div
+        className="w-[80vw] lg:w-[60vw] xl:w-[50vw] max-w-screen-sm z-20 flex-shrink-0"
+        onClick={() => onImageClick(url)}
+    >
+        <div className="h-[50vh] flex items-center justify-center cursor-zoom-in">
+            <img
+                src={url}
+                alt=""
+                className="max-w-full max-h-full object-contain"
                 draggable="false"
             />
         </div>
@@ -39,34 +74,28 @@ const ImageContainer = ({ url, onImageClick }) => (
 );
 
 const HorizontalScroll = ({ selectedWork }) => {
-    // State to track the currently fullscreened image URL
     const [fullscreenImage, setFullscreenImage] = useState(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(null);
     const containerRef = useRef(null);
 
-    // Effect to manage scroll behavior when fullscreen is active
     useEffect(() => {
-        // Save the initial body styles to restore them later
         const originalStyle = window.getComputedStyle(document.body).overflow;
         const originalPosition = window.getComputedStyle(document.body).position;
         const scrollY = window.scrollY;
 
         if (fullscreenImage) {
-            // Disable scrolling when fullscreen is active
             document.body.style.overflow = 'hidden';
             document.body.style.position = 'fixed';
             document.body.style.width = '100%';
             document.body.style.top = `-${scrollY}px`;
         } else {
-            // Restore scrolling when fullscreen is closed
             document.body.style.overflow = originalStyle;
             document.body.style.position = originalPosition;
             document.body.style.width = 'auto';
             document.body.style.top = 'auto';
-            // Restore scroll position
             window.scrollTo(0, scrollY);
         }
 
-        // Cleanup function to ensure we restore scroll behavior
         return () => {
             document.body.style.overflow = originalStyle;
             document.body.style.position = originalPosition;
@@ -76,28 +105,40 @@ const HorizontalScroll = ({ selectedWork }) => {
                 window.scrollTo(0, scrollY);
             }
         };
-    }, [fullscreenImage]); // Only run effect when fullscreen state changes
+    }, [fullscreenImage]);
 
-    // Scroll animation setup
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
     });
 
-    // Filter only image media items
     const images = selectedWork?.media?.filter(item => item.type === 'image') || [];
-
-    // Calculate total scroll distance needed based on number of images
     const totalDistance = -(images.length - 1) * 95;
     const x = useTransform(scrollYProgress, [0, 1], ['0%', `${totalDistance}%`]);
 
-    // Handle fullscreen toggling
     const handleImageClick = (url) => {
+        const index = images.findIndex(img => img.url === url);
+        setCurrentImageIndex(index);
         setFullscreenImage(url);
     };
 
     const handleCloseFullscreen = () => {
         setFullscreenImage(null);
+        setCurrentImageIndex(null);
+    };
+
+    const handleNext = () => {
+        if (currentImageIndex < images.length - 1) {
+            setCurrentImageIndex(currentImageIndex + 1);
+            setFullscreenImage(images[currentImageIndex + 1].url);
+        }
+    };
+
+    const handlePrev = () => {
+        if (currentImageIndex > 0) {
+            setCurrentImageIndex(currentImageIndex - 1);
+            setFullscreenImage(images[currentImageIndex - 1].url);
+        }
     };
 
     if (!selectedWork || images.length === 0) {
@@ -106,18 +147,20 @@ const HorizontalScroll = ({ selectedWork }) => {
 
     return (
         <>
-            {/* Fullscreen overlay */}
             <AnimatePresence>
                 {fullscreenImage && (
                     <FullscreenImage
                         url={fullscreenImage}
                         onClose={handleCloseFullscreen}
+                        onNext={handleNext}
+                        onPrev={handlePrev}
+                        hasNext={currentImageIndex < images.length - 1}
+                        hasPrev={currentImageIndex > 0}
                     />
                 )}
             </AnimatePresence>
 
-            {/* Main horizontal scroll content */}
-            <div ref={containerRef} className="h-[250vh]">
+            <div ref={containerRef} className="h-[200vh]">
                 <div className="sticky top-0 h-screen w-full overflow-hidden bg-white">
                     <div className="relative h-full flex items-center">
                         <motion.div

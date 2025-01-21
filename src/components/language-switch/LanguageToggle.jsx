@@ -1,95 +1,72 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const LanguageSwitcher = ({ expanding }) => {
+const LanguageSwitcher = ({ expanding, className, color }) => {
     const [currentLanguage, setCurrentLanguage] = useState('cn');
     const [isHovered, setIsHovered] = useState(false);
 
     const handleLanguageChange = () => {
-        setCurrentLanguage(currentLanguage === "en" ? "cn" : "en");
+        setCurrentLanguage(currentLanguage === 'en' ? 'cn' : 'en');
     };
 
     // Hover animation variants
-    const hoverVariants = {
-        initial: {
-            scale: 1,
-            opacity: expanding ? 0.6 : 0.7
-        },
-        hover: {
-            scale: 1.1,
-            opacity: 1,
-            transition: {
-                duration: 0.2,
-                ease: "easeInOut"
-            }
-        }
-    };
+    // const hoverVariants = {
+    //     initial: {
+    //         scale: 1,
+    //         opacity: 1,
+    //     },
+    //     hover: {
+    //         scale: 1.1,
+    //         transition: {
+    //             duration: 0.2,
+    //             ease: 'easeInOut',
+    //         },
+    //     },
+    // };
 
-    // Shared props for both expanding and non-expanding states
+    // Shared motion props
     const sharedMotionProps = {
-        variants: hoverVariants,
-        initial: "initial",
-        animate: isHovered ? "hover" : "initial",
-        whileHover: "hover",
+        initial: 'initial',
+        animate: isHovered ? 'hover' : 'initial',
+        whileHover: 'hover',
         onHoverStart: () => setIsHovered(true),
-        onHoverEnd: () => setIsHovered(false)
+        onHoverEnd: () => setIsHovered(false),
     };
 
     return (
-        <>
-            <AnimatePresence>
-                {expanding && (
-                    <motion.div
-                        onClick={handleLanguageChange}
-                        className="fixed right-8 z-50 font-alte tracking-[-0.51px] cursor-pointer text-[14px] text-white"
-                        style={{ top: 'calc(-92vh + 1rem)' }}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 0.3, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.8,
-                            ease: [0.1, 0.1, 0.9, 0.9]
-                        }}
-                        {...sharedMotionProps}
+        <AnimatePresence>
+            <motion.div
+                onClick={handleLanguageChange}
+                className={`flex items-center gap-1 cursor-pointer ${className}`}
+                initial={{ opacity: 0, y: expanding ? -10 : 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: expanding ? -10 : 10 }}
+                transition={{
+                    duration: 0.8,
+                    delay: 0.8,
+                    ease: [0.1, 0.1, 0.9, 0.9],
+                }}
+                {...sharedMotionProps}
+            >
+                <motion.span className={`flex items-center ${color}  gap-1 font-alte text-[14x]`}>
+                    <span
+                        className={`${
+                            currentLanguage === 'en' ? 'underline opacity-100' : 'opacity-50'
+                        }`}
                     >
-                        <motion.span>
-                            {currentLanguage === 'en' ? (
-                                <span className="text-[16px] transform -translate-y-2">ENG</span>
-                            ) : (
-                                <span>中文</span>
-                            )}
-                        </motion.span>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <AnimatePresence>
-                {!expanding && (
-                    <motion.div
-                        className="fixed right-8 bottom-2 z-50 font-newsreader tracking-[-0.51px] cursor-pointer text-[12px] text-black"
-                        onClick={handleLanguageChange}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.8,
-                            ease: [0.1, 0.1, 0.9, 0.9]
-                        }}
-                        {...sharedMotionProps}
+                        EN
+                    </span>
+                    <span>/</span>
+                    <span
+                        className={`${
+                            currentLanguage === 'cn' ? 'underline opacity-100' : 'opacity-50'
+                        }`}
                     >
-                        <motion.span>
-                            {currentLanguage === 'en' ? (
-                                <span className="text-[12px] transform -translate-y-2">en</span>
-                            ) : (
-                                <span>中文</span>
-                            )}
-                        </motion.span>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </>
+                        中文
+                    </span>
+                </motion.span>
+            </motion.div>
+        </AnimatePresence>
     );
 };
 

@@ -17,6 +17,25 @@ import { Menu, X } from 'lucide-react';
 import WorksNavBar from "./components/WorksNavBar.jsx";
 
 
+const LandingNav = ({color, location}) => {
+    return (
+        <div className={`fixed ${location} right-8`}>
+            <div className="flex font-alte-haas flex-row text-gray-100  text-[14px] space-x-6">
+                <div className="flex  flex-row ">
+                    <span className={ ` ${color} cursor-pointer pr-[43px] hover:opacity-100 opacity-50`}> CV</span>
+                    <span className={ ` ${color} cursor-pointer pr-[53px] hover:opacity-100 opacity-50`}> CONTACT</span>
+                    <LanguageSwitcher color={color }/>
+
+                </div>
+
+            </div>
+        </div>
+    )
+}
+
+
+
+
 function WorksComponent() {
 
     const [lastSection, setLastSection] = useState('exhibitions'); // T
@@ -44,7 +63,7 @@ function WorksComponent() {
         // First scroll to top with animation
         const currentScroll = window.scrollY;
         animate(currentScroll, 0, {
-            duration: 0.4,
+            duration: 0.8,
             onUpdate: (value) => window.scrollTo(0, value),
             onComplete: () => {
                 // After scrolling is complete, handle the expanding state
@@ -287,6 +306,8 @@ function WorksComponent() {
                     <HorizontalScroll selectedWork={activeWork}/>
                 </motion.div>
 
+
+
                 <motion.div
                     style={{opacity: infoDivOpacity}}
                     className="fixed flex flex-row bottom-32 left-1/2 transform -translate-x-1/2 z-10">
@@ -298,7 +319,7 @@ function WorksComponent() {
 
                 <motion.div
                     style={{opacity: extraSectionOpacity}}
-                    className="bg-white -mt-[100vh] z-1"
+                    className="bg-white pointer-events-none -mt-[100vh] z-1"
                 >
                     <ExtraSection
                         textContent0={loremStack[0]}
@@ -322,8 +343,11 @@ function WorksComponent() {
             {/*        src="https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video.mp4"*/}
             {/*    />*/}
             {/*</div>*/}
-
-            <VideoBackground />
+            <LandingNav   location={"bottom-[72px]"}  />
+            <div className="font-davinci text-white opacity-80 -tracking-2p   text-[6vw] fixed top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                edie xu
+            </div>
+            <VideoBackground/>
 
             {/* Main content container */}
             <motion.div
@@ -349,13 +373,14 @@ function WorksComponent() {
                     page={page}
                     setPage={setPage}
                     hamburgerOpen={hamburgerOpen}
-                    setHamburgerOpen={setHamburgerOpen}
+                    setHamburgerOpen={setHamburgerOpen} v
                 />
 
                 <AnimatePresence mode="wait">
                     {renderContent()}
                 </AnimatePresence>
                 <OfficeMenu handleReturn={handleReturn}/>
+                {/*<LandingNav color={"text-black"} location={"bottom-4"}/>*/}
             </motion.div>
         </>
     );
