@@ -20,7 +20,7 @@ import WorksNavBar from "./components/WorksNavBar.jsx";
 const LandingNav = ({color, location}) => {
     return (
         <div className={`fixed ${location} right-8`}>
-            <div className="flex font-alte-haas flex-row text-gray-100  text-[14px] space-x-6">
+            <div className="flex font-alte-haas opacity-0 md:opacity-80 flex-row text-gray-100  text-[14px] space-x-6">
                 <div className="flex  flex-row ">
                     <span className={ ` ${color} cursor-pointer pr-[43px] hover:opacity-100 opacity-50`}> CV</span>
                     <span className={ ` ${color} cursor-pointer pr-[53px] hover:opacity-100 opacity-50`}> CONTACT</span>
@@ -344,7 +344,7 @@ function WorksComponent() {
             {/*    />*/}
             {/*</div>*/}
             <LandingNav   location={"bottom-[72px]"}  />
-            <div className="font-davinci text-white opacity-80 -tracking-2p   text-[6vw] fixed top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <div className="font-davinci text-white opacity-0 md:opacity-80 -tracking-2p   text-[6vw] fixed top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                 edie xu
             </div>
             <VideoBackground/>
