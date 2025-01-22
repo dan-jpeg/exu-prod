@@ -8,23 +8,23 @@ const ExhibitionDetails = ({ exhibition }) => (
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
-        className="space-y-6 md:pl-0"
+        className=" text-[10px] md:text-xs space-y-6 md:pl-0"
     >
-        <div className="space-y-4">
+        <div className=" space-y-4">
             <div className=" hidden md:flex items-baseline justify-between">
-                <p className="text-xs italic">{exhibition.title}</p>
-                <p className="text-xs">{exhibition.location}</p>
+                <p className=" italic">{exhibition.title}</p>
+                <p className="">{exhibition.location}</p>
             </div>
-            <p className="hidden md:flex text-xs">{exhibition.date}</p>
+            <p className="hidden md:flex  ">{exhibition.date}</p>
             {exhibition.url && (
-                <p className="text-xs underline">
+                <p className=" underline">
                     <a href={exhibition.url} target="_blank" rel="noopener noreferrer">
                         {exhibition.url}
                     </a>
                 </p>
             )}
             {exhibition.header && (
-                <p className="text-xs pt-4">
+                <p className="pt-4">
                     {exhibition.header}
                 </p>
             )}
@@ -101,9 +101,9 @@ const ExhibitionsIndex = ({ handleReturn }) => {
                                     )}
                                 >
                                     <div className="flex space-y-1 items-baseline md:flex-col justify-between">
-                                        <p className="text-xs italic">{exhibition.title}</p>
-                                        <p className="text-xs">{exhibition.location}</p>
-                                        <p className="text-xs">{exhibition.date}</p>
+                                        <p className="text-[10px] italic">{exhibition.title}</p>
+                                        <p className="text-[10px]">{exhibition.location}</p>
+                                        <p className="text-[10px]">{exhibition.date}</p>
                                     </div>
 
                                 </div>

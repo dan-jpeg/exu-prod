@@ -1,140 +1,114 @@
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import arrow from "@/assets/arrow1.svg";
-
-// const VideoPage = ({handleReturn}) => {
-//     return (
-//         <motion.div
-//             initial={{ opacity: 0, x: "7%" }}
-//             animate={{ opacity: 1, x: 0 }}
-//             exit={{ opacity: 0, x: "7%" }}
-//             transition={{ duration: 0.16 }}
-//             className="absolute inset-0 bg-white min-h-screen min-w-screen p-8"
-//         >
-//             <div className="flex pt-24 items-center gap-4">
-//                 <motion.img
-//                     src={arrow}
-//                     onClick={handleReturn}
-//                     className="cursor-pointer w-5 h-5 hover:opacity-60 rotate-90 transition-opacity "
-//                     alt="back"
-//                 />
-//                 <h2 className="font-newsreader italic">video</h2>
-//             </div>
-//             <p className="mt-16">Video content here</p>
-//         </motion.div>
-//     );
-// };
-//
-// export default VideoPage;
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import arrow from "@/assets/arrow1.svg";
 import { videos } from '@/data.js';
 
-
-
-// Video Display Component
-const DisplayedVideo = ({ video }) => {
-    if (!video) return null;
-
-    return (
-        <div className="w-full">
-            <div className="text-center">
-                <h2 className="font-newsreader italic pt-[39vh] text-sm pb-4">{video.title}</h2>
-                <div className="text-xs font-newsreader">
-                    <p>{video.year}</p>
-                    <p>{video.duration}</p>
-                </div>
-            </div>
-
-            <div className="pt-12 md:pt-[70vh] w-full flex items-center justify-center pr-2.5">
-                {video.videoUrl ? (
-                    <video
-                        className="w-[95%] h-auto"
-                        playsInline
-                        autoPlay
-                        src={video.videoUrl}
-                    />
-                ) : (
-                    <div className="text-center">
-                        <p>Video not available</p>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-};
-
-// Thumbnail Grid Component
-const VideoThumbnails = ({ videos, onSelectVideo, selectedVideo }) => {
-    return (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 px-8 pt-16">
-            {videos.map((video) => (
-                <div
-                    key={video.id}
-                    onClick={() => onSelectVideo(video)}
-                    className={`cursor-pointer transition-opacity duration-200 ${
-                        selectedVideo?.id === video.id ? 'opacity-100' : 'opacity-70'
-                    } hover:opacity-100`}
-                >
-                    <div className="relative w-full pb-[75%] mb-4">
-                        <img
-                            src={video.thumbnail}
-                            alt={video.title}
-                            className="absolute inset-0 w-full h-full object-contain bg-neutral-100"
-                        />
-                    </div>
-                    <div className="mt-2">
-                        <p className="font-newsreader italic text-sm">{video.title}</p>
-                        <p className="text-xs">{video.year}</p>
-                        <p className="text-xs">{video.duration}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
-};
-
-// Main Video Page Component
-const VideoPage = ({ handleReturn }) => {
+const VideoPage = ({ handleReturn, setPage }) => {
     const [selectedVideo, setSelectedVideo] = useState(null);
-
-    const handleVideoSelect = (video) => {
-        setSelectedVideo(video);
-        // Smooth scroll to top when selecting a video
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+    const [hoveredVideo, setHoveredVideo] = useState(null);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, x: "7%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "7%" }}
-            transition={{ duration: 0.16 }}
-            className="absolute inset-0 bg-white min-h-screen"
-        >
-            <div className="flex pt-24 items-center gap-4 px-8">
-                <motion.img
-                    src={arrow}
-                    onClick={handleReturn}
-                    className="cursor-pointer w-5 h-5 hover:opacity-60 rotate-90 transition-opacity"
-                    alt="back"
-                />
-                <h2 className="font-newsreader italic">performance</h2>
-            </div>
+        <div className="min-h-screen bg-white">
+            {/* Main content */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+            >
+                <div className="mx-[30px]">
+                    {/* Layout Grid */}
+                    <div className="grid grid-cols-12 gap-x-1">
+                        {/* Back arrow and title */}
+                        <div className="col-span-2 mt-16">
+                                <motion.img
+                                    src={arrow}
+                                    onClick={handleReturn}
+                                    className="cursor-pointer w-5 h-5 hover:opacity-60 rotate-90"
+                                    alt="back"
+                                />
 
-            {selectedVideo ? (
-                <DisplayedVideo video={selectedVideo} />
-            ) : (
-                <VideoThumbnails
-                    videos={videos}
-                    onSelectVideo={handleVideoSelect}
-                    selectedVideo={selectedVideo}
+                        </div>
 
-                />
+                        {/* Empty columns for spacing */}
+                        <div className="col-span-10"></div>
+
+                        {/* Video Grid - starts at column 4 */}
+                        {videos.map((video, index) => (
+                            <motion.div
+                                key={video.id}
+                                className="col-span-2 h-[145px] relative cursor-pointer"
+                                style={{
+                                    gridColumn: `${4 + ((index % 3) * 2)} / span 2`,
+                                    gridRow: index < 3 ? 1 : 2,
+                                    marginTop: index < 3 ? '242px' : '4px'
+                                }}
+                                onHoverStart={() => setHoveredVideo(video.id)}
+                                onHoverEnd={() => setHoveredVideo(null)}
+                                onClick={() => setSelectedVideo(video)}
+                            >
+                                <img
+                                    src={video.thumbnail}
+                                    alt={video.title}
+                                    className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-300"
+                                />
+                                {hoveredVideo === video.id && (
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-20"
+                                    >
+                                        <div className="text-black text-sm space-y-1 text-center">
+                                            <p className="font-newsreader italic">{video.title}</p>
+                                            <p className="font-alte-haas">{video.year}</p>
+                                            <p className="font-alte-haas">{video.duration}</p>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </motion.div>
+                        ))}
+
+                        {/* Navigation Elements - positioned at the end of grid */}
+                        <div className="row-start-1 col-start-11 col-span-1 text-right grid place-items-end" style={{ marginTop: '242px' }}>
+                            <span
+                                onClick={() => setPage('drawing')}
+                                className="font-alte-haas text-sm hover:opacity-50 transition-opacity cursor-pointer underline underline-offset-4"
+                            >
+                                Performance
+                            </span>
+                        </div>
+                        <div className="row-start-1 col-start-12 col-span-1 text-right grid place-items-end" style={{ marginTop: '242px' }}>
+                            <span className="font-alte-haas text-sm opacity-50 hover:opacity-90 hover:underline cursor-pointer transition-opacity">
+                                Paper
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* Video player modal */}
+            {selectedVideo && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+                >
+                    <button
+                        onClick={() => setSelectedVideo(null)}
+                        className="absolute top-8 right-8 text-white hover:opacity-70"
+                    >
+                        Close
+                    </button>
+                    <video
+                        controls
+                        autoPlay
+                        className="max-w-[90vw] max-h-[90vh]"
+                        src={selectedVideo.videoUrl}
+                    />
+                </motion.div>
             )}
-        </motion.div>
+        </div>
     );
 };
 

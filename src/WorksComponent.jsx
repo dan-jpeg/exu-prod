@@ -352,6 +352,10 @@ function WorksComponent() {
             {/* Main content container */}
             <motion.div
                 ref={containerRef}
+                initial={{
+                    opacity: 1,
+                    y: '94vh'
+                }}
                 variants={containerVariants}
                 animate={expanding ? "shifted" : "initial"}
                 className="relative z-10"
@@ -379,7 +383,6 @@ function WorksComponent() {
                 <AnimatePresence mode="wait">
                     {renderContent()}
                 </AnimatePresence>
-                <OfficeMenu handleReturn={handleReturn}/>
                 {/*<LandingNav color={"text-black"} location={"bottom-4"}/>*/}
             </motion.div>
         </>
