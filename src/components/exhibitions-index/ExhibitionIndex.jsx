@@ -17,7 +17,7 @@ const ExhibitionDetails = ({ exhibition }) => (
             </div>
             <p className="hidden md:flex  ">{exhibition.date}</p>
             {exhibition.url && (
-                <p className=" underline">
+                <p className=" opacity-60 hover:underline hover:underline-offset-4">
                     <a href={exhibition.url} target="_blank" rel="noopener noreferrer">
                         {exhibition.url}
                     </a>
@@ -43,7 +43,7 @@ const ExhibitionDetails = ({ exhibition }) => (
         {exhibition.workIncluded?.length > 0 && (
             <div className="space-y-6 mt-8">
                 {exhibition.workIncluded.map((work, index) => (
-                    <div key={index} className="text-xs space-y-1">
+                    <div key={index} className="space-y-1">
                         <p className="italic">{work.title}, {work.year}</p>
                         <p>{work.dimensions}</p>
                         <p>{work.material}</p>
@@ -89,23 +89,33 @@ const ExhibitionsIndex = ({ handleReturn }) => {
                         <div key={exhibition.id}>
                             <div
                                 className={`transition-opacity duration-300 ${
-                                    selectedExhibition && selectedExhibition.id !== exhibition.id
-                                        ? 'opacity-30'
-                                        : 'opacity-100'
+                                    !selectedExhibition 
+                                        ? 'opacity-80'
+                                        : selectedExhibition.id === exhibition.id  ? 'opacity-100 underline underline-offset-4'
+                                        : 'opacity-25'
                                 }`}
+
+
                             >
                                 <div
-                                    className="space-y-1 cursor-pointer hover:underline"
+                                    className="space-y-1 cursor-pointer hover:underline hover:opacity-100 hover:underline-offset-4"
                                     onClick={() => selectExhibition(
                                         selectedExhibition?.id === exhibition.id ? null : exhibition.id
                                     )}
                                 >
-                                    <div className="flex space-y-1 items-baseline md:flex-col justify-between">
+                                    <div className="grid grid-cols-3 gap-4 md:hidden">
+                                        <p className="text-[10px] italic">{exhibition.title}</p>
+                                        <p className="text-[10px] text-center">{exhibition.location}</p>
+                                        <p className="text-[10px] text-right">{exhibition.date}</p>
+                                    </div>
+
+                                    {/* Flex Layout for Medium and Larger Screens */}
+                                    <div
+                                        className="hidden md:flex space-y-1 items-baseline md:flex-col justify-between">
                                         <p className="text-[10px] italic">{exhibition.title}</p>
                                         <p className="text-[10px]">{exhibition.location}</p>
                                         <p className="text-[10px]">{exhibition.date}</p>
                                     </div>
-
                                 </div>
                             </div>
 

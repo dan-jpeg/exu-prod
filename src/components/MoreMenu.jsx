@@ -29,7 +29,7 @@ const MoreMenu = ({ onVideoClick, onDrawingClick }) => {
             onClick={handleToggle}
         >
             <div className="inline-block min-w-[120px]">
-                <p className="font-alte-haas text-custom pb-0 mb-0 tracking-[-0.51px] cursor-pointer">
+                <p className=" text-custom pb-0 mb-0  cursor-pointer">
                     {isExpanded ? "- " : "+ "}More
                 </p>
 
@@ -38,13 +38,13 @@ const MoreMenu = ({ onVideoClick, onDrawingClick }) => {
                 }`}>
                     <button
                         onClick={onVideoClick}
-                        className="font-alte-haas  my-0 py-0  tracking-[-0.51px] hover:opacity-25 transition-opacity cursor-pointer"
+                        className=" text-custom  my-0 py-0  hover:opacity-25 transition-opacity cursor-pointer"
                     >
                         Performance
                     </button>
                     <button
                         onClick={onDrawingClick}
-                        className="font-alte-haas  my-0 py-0  tracking-[-0.51px] hover:opacity-25 transition-opacity cursor-pointer"
+                        className=" text-custom  my-0 py-0   hover:opacity-25 transition-opacity cursor-pointer"
                     >
                         Paper
                     </button>

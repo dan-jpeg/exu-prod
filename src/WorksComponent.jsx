@@ -288,7 +288,7 @@ function WorksComponent() {
                             delay: 0.2,  // Adds a delay to all animations
                             duration: 0.4 // Controls how long the animation takes
                         }}
-                        className={` `}
+                        className={` pt-2 `}
                     >
                         <MoreMenu
                             onVideoClick={() => setPage('video')}
@@ -367,7 +367,7 @@ function WorksComponent() {
                     animate={{opacity: 1}}
                 />
 
-                <LanguageSwitcher expanding={expanding}/>
+
                 <WorksNavBar
                     expanding={expanding}
                     handleReturn={handleReturn}
