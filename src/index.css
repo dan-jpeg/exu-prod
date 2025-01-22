@@ -34,7 +34,10 @@
 
 @layer components {
   .text-custom {
-    @apply font-alte-haas tracking-[0.5px] text-sm;
+    @apply font-alte-haas tracking-[0.5px] text-sm ;
+  }
+  .text-custom-bold {
+    @apply font-alte-haas tracking-[0.5px] text-sm font-bold;
   }
 }
 

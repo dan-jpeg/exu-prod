@@ -72,13 +72,13 @@ const VideoPage = ({ handleReturn, setPage }) => {
                         <div className="row-start-1 col-start-11 col-span-1 text-right grid place-items-end" style={{ marginTop: '242px' }}>
                             <span
                                 onClick={() => setPage('drawing')}
-                                className="font-alte-haas text-sm hover:opacity-50 transition-opacity cursor-pointer underline underline-offset-4"
+                                className="text-custom-bold hover:opacity-50   transition-opacity cursor-pointer"
                             >
                                 Performance
                             </span>
                         </div>
-                        <div className="row-start-1 col-start-12 col-span-1 text-right grid place-items-end" style={{ marginTop: '242px' }}>
-                            <span className="font-alte-haas text-sm opacity-50 hover:opacity-90 hover:underline cursor-pointer transition-opacity">
+                        <div className="row-start-1 col-start-12 col-span-1  text-right grid place-items-end" style={{ marginTop: '242px' }}>
+                            <span className="text-custom opacity-50 hover:opacity-90 hover:underline  hover:underline-offset-4 cursor-pointer transition-opacity">
                                 Paper
                             </span>
                         </div>
