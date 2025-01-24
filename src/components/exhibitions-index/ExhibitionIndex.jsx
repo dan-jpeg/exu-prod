@@ -82,7 +82,7 @@ const ExhibitionsIndex = ({ handleReturn }) => {
             transition={{duration: 0.2}}
         >
 
-            <div className="md:grid md:grid-cols-5 md:gap-16">
+            <div className="md:grid md:grid-cols-6 md:gap-16">
                 {/* Left Column - Exhibition List with Inline Details on Mobile */}
                 <div className=" md:col-span-2 space-y-8">
                     {exhibitions2.map((exhibition) => (
@@ -132,7 +132,7 @@ const ExhibitionsIndex = ({ handleReturn }) => {
                 </div>
 
                 {/* Desktop Right Column - Selected Exhibition Details */}
-                <div className="hidden md:col-span-3 md:block mt-8 md:mt-0">
+                <div className="hidden md:col-span-4 md:block mt-8 md:mt-0">
                     <AnimatePresence mode="wait">
                         {selectedExhibition && <ExhibitionDetails exhibition={selectedExhibition}/>}
                     </AnimatePresence>

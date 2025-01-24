@@ -25,13 +25,12 @@ const LandingNav = ({color, location}) => {
                     <span className={ ` ${color} cursor-pointer pr-[43px] hover:opacity-100 opacity-50`}> CV</span>
                     <span className={ ` ${color} cursor-pointer pr-[53px] hover:opacity-100 opacity-50`}> CONTACT</span>
                     <LanguageSwitcher color={color }/>
-
                 </div>
-
             </div>
         </div>
     )
 }
+
 
 
 
@@ -45,6 +44,7 @@ function WorksComponent() {
     const [page, setPage] = useState('works');
     const [moreExpanded, setMoreExpanded] = useState(false);
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
+    const [videoLoading, setVideoLoading] = useState(false);
 
 
     const animationConfig = {
@@ -343,11 +343,32 @@ function WorksComponent() {
             {/*        src="https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/lp_video.mp4"*/}
             {/*    />*/}
             {/*</div>*/}
-            <LandingNav   location={"bottom-[72px]"}  />
-            <div className="font-davinci text-white opacity-0 md:opacity-80 -tracking-2p   text-[6vw] fixed top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                edie xu
-            </div>
-            <VideoBackground/>
+            <LandingNav location={"bottom-[72px]"}/>
+            {/*<LandingNav location={"bottom-[30vh]"}/>*/}
+            {/*<div*/}
+            {/*    className="font-davinci text-white opacity-0 md:opacity-80 -tracking-2p   text-[6vw] fixed top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">*/}
+            {/*    edie xu*/}
+            {/*</div>*/}
+
+            {/*{!videoLoading && (*/}
+            {/*    <div*/}
+            {/*        className="font-davinci text-white opacity-0 md:opacity-80 -tracking-2p   text-[4vw] fixed top-2/3 left-1/2 transform -translate-y-1/2 -translate-x-1/2">*/}
+            {/*        edie xu*/}
+            {/*    </div>*/}
+            {/*)}*/}
+
+            {!videoLoading && (
+                <div
+                    className="font-davinci text-white opacity-0 md:opacity-80 -tracking-2p   text-[4vw] fixed top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                    edie xu
+                </div>
+            )}
+
+            {/*<div*/}
+            {/*    className="font-davinci text-white opacity-0 md:opacity-80 -tracking-2p   text-[4vw] fixed top-4 left-8">*/}
+            {/*    edie xu*/}
+            {/*</div>*/}
+            <VideoBackground onLoadingChange={setVideoLoading}/>
 
             {/* Main content container */}
             <motion.div

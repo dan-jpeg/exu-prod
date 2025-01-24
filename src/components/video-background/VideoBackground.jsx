@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const VideoBackground = () => {
+const VideoBackground = ({ onLoadingChange }) => {
     const [loading, setLoading] = useState(true);
     const videoRef = useRef(null);
 
@@ -18,23 +18,37 @@ const VideoBackground = () => {
         if (!video) return;
 
         const handleCanPlayThrough = () => {
-            console.log("Can play through event");
             setLoading(false);
+            onLoadingChange?.(false); // Notify parent component
+        };
+
+        const handleLoadStart = () => {
+            setLoading(true);
+            onLoadingChange?.(true); // Notify parent component
+        };
+
+        const handleError = (error) => {
+            console.error('Video loading error:', error);
+            setLoading(false);
+            onLoadingChange?.(false);
         };
 
         video.addEventListener("canplaythrough", handleCanPlayThrough);
+        video.addEventListener("loadstart", handleLoadStart);
+        video.addEventListener("error", handleError);
 
         return () => {
             video.removeEventListener("canplaythrough", handleCanPlayThrough);
+            video.removeEventListener("loadstart", handleLoadStart);
+            video.removeEventListener("error", handleError);
         };
-    }, []);
+    }, [onLoadingChange]);
 
     return (
         <div className="fixed inset-0 -z-10 w-full h-full">
             {loading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black">
                     <div className="w-32 h-32 flex flex-col items-center justify-center">
-                        {/* Circular progress indicator */}
                         <div className="mt-4 text-sm text-white">content loading...</div>
                     </div>
                 </div>

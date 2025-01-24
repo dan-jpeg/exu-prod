@@ -14,7 +14,9 @@ const OfficeMenu = ({ handleReturn, expanding }) => {
     const handleHomeClick = () => {
         setMenuOpen(false);
         setContactOpen(false);
-        if (handleReturn) handleReturn();
+        if (!expanding) {
+            handleReturn();
+        }
     };
 
     const openAndExpand = () => {
@@ -30,7 +32,7 @@ const OfficeMenu = ({ handleReturn, expanding }) => {
         <>
            <span
                className="text-custom cursor-pointer" // Matched to the original nav styling
-               onClick={openAndExpand}
+               onClick={handleReturn}
            >
                 Edie Xu
             </span>

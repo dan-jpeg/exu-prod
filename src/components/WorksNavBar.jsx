@@ -74,7 +74,7 @@ const WorksNavBar = ({
             <AnimatePresence>
                 {hamburgerOpen && (
                     <motion.div
-                        className={`fixed ${!expanding ? 'top-16 z-30' : '-top-[150px]'} left-0 right-0 bg-neutral-100 z-30 border-t border-neutral-100`}
+                        className={`fixed ${!expanding ? 'top-16 z-30' : '-top-[190px]'} left-0 right-0 bg-neutral-100 z-30 border-t border-neutral-100`}
                         initial={{y: expanding ? "50%" : "-50%", opacity: 0}}
                         animate={{y: 0, opacity: 1}}
                         exit={{y: expanding ? "50%" : "-50%", opacity: 0}}
@@ -87,6 +87,7 @@ const WorksNavBar = ({
                             >
                                 Works
                             </button>
+
                             <button
                                 className="text-custom  hover:opacity-60"
                                 onClick={() => handleNavigate('exhibitions')}
@@ -104,6 +105,18 @@ const WorksNavBar = ({
                                 onClick={() => handleNavigate('works', 'drawing')}
                             >
                                 Paper
+                            </button>
+                            <button
+                                className="text-custom  hover:opacity-60"
+                                onClick={() => handleNavigate('works')}
+                            >
+                                Download CV
+                            </button>
+                            <button
+                                className="text-custom  hover:opacity-60"
+                                onClick={() => handleNavigate('works')}
+                            >
+                                Contact
                             </button>
                         </div>
                     </motion.div>
