@@ -138,9 +138,8 @@ const NewHomeMobile = () => {
                     )}
                 </motion.div>
 
-                {/* Footer */}
+                {/* Footer */}{!selectedExhibition && (
                 <motion.div
-
                     className="fixed bottom-1 text-[10px] left-0 w-full flex flex-col items-center font-bold p-2"
                 >
                     <div className="text-">EDIE XU</div>
@@ -149,6 +148,7 @@ const NewHomeMobile = () => {
                         <span>@COMMON-DESIGN</span>
                     </div>
                 </motion.div>
+            )}
             </div>
         </div>
     );

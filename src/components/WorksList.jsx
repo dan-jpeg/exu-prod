@@ -68,7 +68,7 @@ const WorkRow = ({ work }) => {
                         <img
                             src={displayImages[0]}
                             alt={`${work.title} 1`}
-                            className="h-[5vw] w-auto object-cover cursor-zoom-in"
+                            className="h-[10vw] md:h-[5vw] w-auto object-cover cursor-zoom-in"
                             draggable="false"
                             onClick={() => handleImageClick(displayImages[0])}
                         />
@@ -84,7 +84,7 @@ const WorkRow = ({ work }) => {
                         <img
                             src={displayImages[1]}
                             alt={`${work.title} 2`}
-                            className="h-[5vw] w-auto object-cover cursor-zoom-in"
+                            className="h-[8vw] md:h-[5vw] w-auto object-cover cursor-zoom-in"
                             draggable="false"
                             onClick={() => handleImageClick(displayImages[1])}
                         />
@@ -97,7 +97,7 @@ const WorkRow = ({ work }) => {
                         <img
                             src={displayImages[2]}
                             alt={`${work.title} 3`}
-                            className="h-[5vw] w-auto object-cover cursor-zoom-in"
+                            className="h-[7vw] md:h-[5vw] w-auto object-cover cursor-zoom-in"
                             draggable="false"
                             onClick={() => handleImageClick(displayImages[2])}
                         />
@@ -113,7 +113,7 @@ const WorkRow = ({ work }) => {
                         <img
                             src={displayImages[3]}
                             alt={`${work.title} 4`}
-                            className="h-[5vw] w-auto object-cover cursor-zoom-in"
+                            className="h-[10vw] md:h-[5vw] w-auto object-cover cursor-zoom-in"
                             draggable="false"
                             onClick={() => handleImageClick(displayImages[3])}
                         />
