@@ -100,7 +100,7 @@ const Coordinates = () => {
             </div>
             <div className="fixed bottom-2 left-0 w-full text-center">
                 <div
-                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[1vw] lg:text-[12px] justify-center">
+                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
                     <span> N 39.984036 S 116.496563 </span>
                     <div className="flex-row space-x-2">
                         <span
