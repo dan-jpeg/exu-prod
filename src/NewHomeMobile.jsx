@@ -116,7 +116,7 @@ const NewHomeMobile = () => {
                     animate={{opacity: 1, y: 0}}
                     exit={{opacity: 0, y: -20}}
                     transition={{duration: 0.3}}
-                    className="px-4 pt-32 justify-center items-center"
+                    className="px-4 pt-20 justify-center items-center"
                 >
                     {selectedExhibition ? (
                         getExhibitionComponent(selectedExhibition)

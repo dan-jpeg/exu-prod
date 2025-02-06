@@ -327,9 +327,10 @@ const exhibitions2 = [
         url: "https://www.shanghartgallery.com/galleryarchive/exhibition.htm?exbId=17117",
         date: "2024",
         images: [
+
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality06-small.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/limited-intentionality_01.jpeg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality08-small.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality06-small.jpg",
 
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality07small.jpg",
 
@@ -379,6 +380,7 @@ const exhibitions2 = [
         subheader: "",
 
         images: [
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place06%400.25x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place06%400.25x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place04%400.25x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place05%400.25x.jpg",
@@ -441,6 +443,8 @@ const exhibitions2 = [
             "Exhibited with Cheng Tingting, Chen Jiajun, Hu Longxiang, Xiong Haoqi, Xu Siyi, Wang Yuxiao, Zhou Tianyu",
         subheader: "",
         images: [
+
+            "https://firebasestorage.googleapis.com/v0/b/common-base-d538e.firebasestorage.app/o/Screenshot%202025-02-06%20at%2012.00.20%E2%80%AFPM.png?alt=media&token=edce4f9d-1e73-4d27-af14-1af1895463a3",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate04%400.3x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate05%400.3x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate06%400.3x.jpg",
@@ -486,6 +490,7 @@ const exhibitions2 = [
         header: "",
         subheader: "",
         images: [
+            "https://firebasestorage.googleapis.com/v0/b/common-base-d538e.firebasestorage.app/o/Screenshot%202025-02-06%20at%2012.00.48%E2%80%AFPM.png?alt=media&token=8914033a-22dd-4aec-84e4-d4d12101c121",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/n-s_01.jpeg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/n-s02.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/n-s03.jpg",
@@ -506,6 +511,7 @@ const exhibitions2 = [
             "Exhibited with Anika Jeyaranjan, Dillon Bryant, Fernanda Carvalho Santos, Goldie, Inaara Vishnani, Maddie May, Riley Lynch, and Ryan Zhao",
         subheader: "Curated by Bri Pizarro, Matthew Cortez, and Sarah Grogan",
         images: [
+            "https://firebasestorage.googleapis.com/v0/b/common-base-d538e.firebasestorage.app/o/Screenshot%202025-02-06%20at%2012.01.43%E2%80%AFPM.png?alt=media&token=fb9f7baf-a753-4425-9548-0de102530010",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/allure-of-the-abject_01.jpeg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/allure-of-the-abject02.png",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/allure-of-the-abject04.jpg",
@@ -533,6 +539,7 @@ const exhibitions2 = [
         subheader: "Curated by Zhang Yi",
 
         images: [
+            "https://firebasestorage.googleapis.com/v0/b/common-base-d538e.firebasestorage.app/o/Screenshot%202025-02-06%20at%2012.02.41%E2%80%AFPM.png?alt=media&token=9e7466cb-7f9e-46c5-b986-b0ae074d23b0",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/somatic-attunement_01.png",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/somatic-attunement02%400.25x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/somatic-attunement03%400.2x.jpg",

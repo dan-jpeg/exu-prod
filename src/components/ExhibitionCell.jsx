@@ -2,7 +2,7 @@ import React from 'react';
 
 const ExhibitionCell = ({ title, year, images, onClick }) => {
 
-    const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+    const [currentImageIndex, setCurrentImageIndex] = React.useState(1);
 
     const handleMouseEnter = () => {
         const randomIndex = Math.floor(Math.random() * images.length)
