@@ -45,7 +45,7 @@ const WorkRow = ({ work }) => {
             </AnimatePresence>
 
             {/* Title and details row */}
-            <div className="grid text-[1vw] lg:text-[11px] mb-20 uppercase font-bold font-alte-haas opacity-80 grid-cols-6 w-full">
+            <div className="grid text-[2vw] md:text-[1vw] lg:text-[11px] mb-20 uppercase font-bold font-alte-haas opacity-80 grid-cols-6 w-full">
                 <div className="col-span-1 justify-self-start">
                     <span>{work.title}</span>
                 </div>

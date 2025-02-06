@@ -11,6 +11,7 @@ import AllureOfTheAbject from "@/components/AllureOfTheAbject";
 import LimitedIntentionality from "@/components/LimitedIntentionality";
 import { WorksGrid } from "@/components/NewWorksGrid";
 import ExhibitionCellMobile from "@/ExhibitionCellMobile.jsx";
+import LimitedIntentionalityMobile from "@/components/LimitedIntentionalityMobile.jsx";
 
 const NewHomeMobile = () => {
     const [selectedExhibition, setSelectedExhibition] = useState(null);
@@ -27,9 +28,9 @@ const NewHomeMobile = () => {
 
     const scrollToContent = () => {
         const viewportHeight = window.innerHeight;
-        const targetY = viewportHeight - 100;
 
-        animate(window.scrollY, targetY, {
+
+        animate(window.scrollY, 0, {
             duration: 0.57,
             ease: [0.1, 0.1, 0.9, 0.9],
             onUpdate: (value) => window.scrollTo(0, value)
@@ -59,7 +60,7 @@ const NewHomeMobile = () => {
             case 'N 39.984036 S 116.496563': return <Coordinates />;
             case 'Resonate with fragmentation': return <ResonateWithFragmentation />;
             case 'Allure Of The Abject': return <AllureOfTheAbject />;
-            case 'limited intentionality': return <LimitedIntentionality />;
+            case 'limited intentionality': return <LimitedIntentionalityMobile />;
             default: return <OutOfPlace />;
         }
     };

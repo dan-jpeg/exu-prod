@@ -95,18 +95,19 @@ const LimitedIntentionality = () => {
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
             <div ref={photoRef}>
-                <ImageContainer images={images} />
+                <ImageContainer images={images}/>
             </div>
 
-            <WorksList works={workIncluded[0]} />
-            <WorksList works={workIncluded[1]} />
-            <div ref={textRef} className="w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
+            <WorksList works={workIncluded[0]}/>
+            <WorksList works={workIncluded[1]}/>
+            <div ref={textRef} className="w-[61vw] lg:w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
                 <p className="indent-4">{loremStack[1]}{loremStack[4]}</p>
                 <p className="indent-4">{loremStack[2]}{loremStack[4]}</p>
                 <p className="indent-4">{loremStack[3]}</p>
             </div>
             <div className="fixed bottom-2 left-0 w-full text-center">
-                <div className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[1vw] lg:text-[12px] justify-center">
+                <div
+                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[1vw] lg:text-[12px] justify-center">
                     <span> LIMITED INTENTIONALITY</span>
                     <div className="flex-row space-x-2">
                         <span

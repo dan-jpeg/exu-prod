@@ -14,7 +14,7 @@ const ExhibitionCellMobile = ({ title, year, images, onClick }) => {
     }
 
     return (
-        <div onClick={onClick}  className=" cursor-pointer w-1/2 max-w-[300px]  flex-col" 
+        <div onClick={onClick}  className=" cursor-pointer w-1/2 max-w-[250px]  flex-col"
         >
             <div className="flex text-[9px] lg:text-[11px]  uppercase font-bold   justify-between items-start mb-1">
                 <span className=" font-alte-haas">{title}</span>
