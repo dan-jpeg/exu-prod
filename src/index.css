@@ -69,3 +69,15 @@ body {
 }
 
 
+html, body {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* For Safari */
+body {
+  -webkit-overflow-scrolling: touch;
+}

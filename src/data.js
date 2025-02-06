@@ -91,7 +91,7 @@ const selectedWorks = [
         id: "3",
         category: " ",
         location: " ",
-        title: "oxygenated  ",
+        title: "oxygenated",
         description: "",
         year: "2023",
         dimensions: "34 x 23 x 15 inches (86 x 58 x 38 cm)",
@@ -325,12 +325,15 @@ const exhibitions2 = [
         title: "limited intentionality",
         location: "Shanghart, Shang Hai",
         url: "https://www.shanghartgallery.com/galleryarchive/exhibition.htm?exbId=17117",
-        date: "2024 03. 22-06. 01",
+        date: "2024",
         images: [
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/limited-intentionality_01.jpeg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality07small.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality06-small.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality08-small.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality06-small.jpg",
+
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality07small.jpg",
+
+
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality01-small.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality02-small.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality03-small.jpg",
@@ -376,19 +379,32 @@ const exhibitions2 = [
         subheader: "",
 
         images: [
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/out-of-place_01.jpeg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place01%400.25x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place02%400.25x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place03%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place06%400.25x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place04%400.25x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place05%400.25x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place06%400.25x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place07%400.25x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place08%400.2x.jpg",
+
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place09%400.2x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place10%400.25x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place11%400.25x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place12%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place11%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place07%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place01%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place10%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place08%400.2x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place02%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place03%400.25x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/out-of-place_01.jpeg",
+
+
+
+
+
+
+
+
+
+
+
+
         ],
         textContent:
             "Beijing Commune is pleased to present “Out of Place”, a group exhibition featuring works by Chang Yuchen, Ge Yulu, Hu Xiaoyuan, Li Binyuan, Li Shuang, Xu Siyi, Zhao Zhiliang, and Zhou Yilun, from January 26 to March 2, 2024. Spanning sculptures, videos, installations, and site-specific paintings, the works on display open up a multi-layered experience tunnelingthrough different portals: the screen, the lens, the curtain, and the door. While entrance often implies a metaphorical segmentation between the past and future, contemporary life dwells on the threshold, constantly prompting retrospection and prospection only to attest to their fecklessness and futility. Weaving a tapestry of ill-timed encounters, the exhibition spotlights a range of perceptions and (non-)adaptions with the artists’ works oscillating between metamorphosing and decaying, reveling and mourning, and remembering and forgetting. Dimly lit, the exhibition room seems to extend beyond the physical space as Hu Xiaoyuan’s video dominates one side of the wall venturing into a disphotic zone. A hissing noise from the drone intrudes the picturesque exploration, suggestive of the tools and technology that wedge in between human and nature. The nonplussed rooster hovering in the unfathomable cave alludes to the hands controlling it through the drone, recalling the bygone Zuhandenheit (present-at-hand) since ways of production are mediated by technology. In the elongated sculptures on the glossy plastic stool by Zhao Zhiliang, the rough porcelain surface retains traces of extensive kneading, rubbing, and caressing by the artist's hands, incorporating the fuzzy intimacy of the corporeal experience. In the same vein of questioning functionality that strips away the agency of hands, Zhou Yilun’s destruction of furniture and domestic settings rails against the prescribed form. Meanwhile, Chang Yuchen's kaleidoscope of coral sketches is a personal language system based on the corals she collected on Dinawan Island. Each combination can be read as a sentence. With poetic connotations, it would be surprising to know that each line is from a selection of example sentences in a mass-printed Chinese-Malay dictionary. Illuminating sentiments in handwriting which Heidegger discerned as the counterpart of typewriting, Chang’s meticulous, as detailed as printmaking, coral sentences challenge the relationship between the reader and the artist, between language and nature. For that up to this point, all distances are abolished: seat and seat; word and word; place and place, “everything gets lumped together into uniform distancelessness.” [1] Li Binyuan's performance video is often taken against the backdrop of generic places which would be the least unfamiliar scenes to the audience here. Nonetheless, they are anonymous. Mirroring emotional connections that are neither remote nor truly close, the frantic flame charts both evocation and oblivion in Li’s seemingly absurd attempt to engage. Suspension of distance emerges almost instantaneously from Edie Siyi Xu’s juxtaposition of the ponderous and mechanical iron stand and the fossil-like ceramics: upon closer scrutiny, one notices crevices on the enclosed clay cocoon which hint at the mysterious hollow often seen in her work evoking the intuitive sense of belonging. Underlining the status of disassociation, Li Shuang, who is absent in her video, recruited 20 performers styled identically in blunt-cut fringe and spycam-like glasses like the artist herself. The footage of avatars interacting with Li’s friends through the lens in their glasses unveils a world infiltrated by interfaces. We are always connected, always plugged in. If it weren't for a light source on the ground, perhaps no one would notice Ge Yulu's Matrix-like diagram map painted on the floor. Light has always been the metaphor for the field of vision, but now the flashlight illuminates an interface for access. The source code sounds remote, maybe the only thing remote; the matrix should be preserved in the polar glacier, yet it is close at one’s feet.",
@@ -425,12 +441,17 @@ const exhibitions2 = [
             "Exhibited with Cheng Tingting, Chen Jiajun, Hu Longxiang, Xiong Haoqi, Xu Siyi, Wang Yuxiao, Zhou Tianyu",
         subheader: "",
         images: [
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/resonate-with-fragmentation_01.jpeg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate02%400.3x.jpg",
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate03%400.3x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate04%400.3x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate05%400.3x.jpg",
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate06%400.3x.jpg",
+
+
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate02%400.3x.jpg",
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/resonate-with-fragmentation_01.jpeg",
+
+            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/resonate03%400.3x.jpg",
+
+
         ],
         textContent:
             "Edie Xu, born in New York in 2000, graduated from the School of the Art Institute of Chicago in 2023. Her works involve various media, including sculpture installations, ceramics, clothing, painting, and more. The delicacy and fragility of these media create tension within her works. Her recent pieces question aesthetic standards by exploring geometric distortions of the body, interpreting the relationship between media and symbols, expressing precisely the irregular and unconstrained essence between humanity and society. Her works in the exhibition, spanning different media, focus on the exploration of perceptions of the body, space, and time, collectively revealing the dialectical relationship between positive and negative forms in space. In the ceramic sculpture 'Intimate being,' the tension between the ceramic shell and its hollow interior mirrors the positive and negative spaces within and around our bodies. The solid presence of ceramics evokes associations with the human body, while fabric serves as the external skin, enveloping the form. In the soft sculpture piece 'Landmart', she chooses fabric as a soft material to explore the ever- changing relationship between the artwork and space. The hollow of the ceramic sculpture transforms into holes between taut fabric fibers here. The lead nail powder left on the ground becomes an integral part of the work, extending the connection with the space. As a highly flexible medium, fabric brings infinite possibilities for change, establishing diverse and fragile relationships with space. It can not only be worn on the human body but can also be related to the current exhibition space. Body, space, and concepts in Edie Xu's sculptural works form a cohesive whole, presenting an organic form that flows and spreads.",
