@@ -30,7 +30,7 @@ const WorkDisplay = ({ work, heightArray = ['5vw', '5vw', '5vw', '5vw'] }) => {
             </AnimatePresence>
 
             {/* Title and details row */}
-            <div className="grid text-[1vw] lg:text-[11px] mb-20 uppercase font-bold font-alte-haas opacity-80 grid-cols-6 w-full">
+            <div className="grid text-[1vw] lg:text-[10px] mb-[8vw] uppercase font-bold font-alte-haas opacity-80 grid-cols-6 w-full">
                 <div className="col-span-1 justify-self-start">
                     <span>{work.title}</span>
                 </div>
@@ -45,7 +45,7 @@ const WorkDisplay = ({ work, heightArray = ['5vw', '5vw', '5vw', '5vw'] }) => {
 
             {/* Multiple rows of images */}
             {rows.map((rowImages, rowIndex) => (
-                <div key={rowIndex} className="grid grid-cols-6 w-full mb-8">
+                <div key={rowIndex} className="grid grid-cols-6 w-full mb-[2vw]">
                     {/* First image - column 1 */}
                     <div className="col-span-1 flex justify-center">
                         {rowImages[0] && (
@@ -123,37 +123,37 @@ export const WorksGrid = () => {
         <div className="w-full mt-12">
             <WorkDisplay
                 work={selectedWorks[0]}
-                heightArray={['8vw', '6vw', '8vw', '6vw']}
+                heightArray={['8vw', '6vw', '6vw', '6vw']}
             />
 
             <WorkDisplay
                 work={selectedWorks[1]}
-                heightArray={['7vw', '9vw', '7vw', '9vw']}
+                heightArray={['6vw', '8vw', '6vw', '7vw']}
             />
 
             <WorkDisplay
                 work={selectedWorks[2]}
-                heightArray={['6vw', '8vw', '6vw', '8vw']}
+                heightArray={['10vw', '9vw', '12vw', '10vw']}
             />
 
             <WorkDisplay
                 work={selectedWorks[3]}
-                heightArray={['9vw', '7vw', '9vw', '7vw']}
+                heightArray={['10vw', '9vw', '12vw', '10vw']}
             />
 
             <WorkDisplay
                 work={selectedWorks[4]}
-                heightArray={['9vw', '7vw', '9vw', '7vw']}
+                heightArray={['15vw', '14vw', '9vw', '7vw']}
             />
 
             <WorkDisplay
                 work={selectedWorks[5]}
-                heightArray={['9vw', '7vw', '9vw', '7vw']}
+                heightArray={['14vw', '15vw', '9vw', '7vw']}
             />
 
             <WorkDisplay
                 work={selectedWorks[6]}
-                heightArray={['9vw', '7vw', '9vw', '7vw']}
+                heightArray={['9vw', '12vw', '9vw', '7vw']}
             />
 
 

@@ -1,28 +1,31 @@
 import React from 'react';
 
 const ExhibitionCell = ({ title, year, images, onClick }) => {
-
     const [currentImageIndex, setCurrentImageIndex] = React.useState(1);
 
     const handleMouseEnter = () => {
-        const randomIndex = Math.floor(Math.random() * images.length)
+        const randomIndex = Math.floor(Math.random() * images.length);
         setCurrentImageIndex(randomIndex);
-    }
+    };
 
     const handleMouseLeave = () => {
         // setCurrentImageIndex(0)
-    }
+    };
 
     return (
-        <div onClick={onClick}  className=" cursor-pointer  flex-col"
-        onMouseEnter={handleMouseEnter}
-             onMouseLeave={handleMouseLeave}
+        <div
+            onClick={onClick}
+            className="cursor-pointer flex flex-col h-full"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
-            <div className="flex text-[1vw] lg:text-[11px]  uppercase font-bold    justify-between items-start mb-5">
-                <span className=" font-alte-haas">{title}</span>
-                <span className=" font-alte-haas">{year}</span>
+            <div className="md:h-4  lg:h-[1vw] flex flex-col mb-5">
+                <div className="flex uppercase font-bold justify-between items-start w-full">
+                    <span className=" hover:opacity-15 font-alte-haas max-w-[70%] leading-tight">{title}</span>
+                    <span className="font-alte-haas">{year}</span>
+                </div>
             </div>
-            <div className="w-full pt-[1px] flex justify-center">
+            <div className="w-full pt-4 flex justify-center">
                 <img
                     src={images[currentImageIndex]}
                     alt={title}
@@ -34,4 +37,3 @@ const ExhibitionCell = ({ title, year, images, onClick }) => {
 };
 
 export default ExhibitionCell;
-

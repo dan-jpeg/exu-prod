@@ -435,7 +435,7 @@ const exhibitions2 = [
     {
         id: "e2",
         category: " ",
-        title: "Resonate with fragmentation",
+        title: "Resonate w/ fragmentation",
         location: "Ginkgo Space, Shanghai",
         date: "2024. 01. 06-03. 09",
         url: "https://www.ginkgospace.cn/en/exhibition/details/2267",
