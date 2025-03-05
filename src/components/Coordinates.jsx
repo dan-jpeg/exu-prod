@@ -88,17 +88,32 @@ const Coordinates = () => {
 
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
-            <div ref={photoRef}>
+            <div ref={photoRef} className="pb-40">
                 <ImageContainer images={images}/>
             </div>
 
             {/*<FullWidthPhotoColumn ref={photoRef} images={images} />*/}
-            <div ref={textRef} className="w-[61vw] lg:w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
-                <p className="indent-4">{loremStack[1]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[2]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[3]}</p>
+            <div ref={textRef}
+                 className="w-[61vw] lg:w-[54vw] mx-auto text-left leading-8  font-bold text-[2vw] md:text-[1vw]  lg:text-[14px] pt-44 pb-32">
+                <div className="grid grid-cols-4 uppercase place-items-start text-center justify-center">
+
+                    <div className={`flex-row  place-self-center col-span-4 text-center flex space-x-4 col-span-3  `}>
+                        <p>Caijin Space, Beijing</p>
+                        <p>2023</p>
+                    </div>
+                </div>
             </div>
-            <div className="fixed bottom-2 left-0 w-full text-center">
+            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
+                <span>
+                    EDIE XU
+                </span>
+            </div>
+            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
+                <span>
+                    PROJECTS
+                </span>
+            </div>
+            <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
                     className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
                     <span> N 39.984036 S 116.496563 </span>

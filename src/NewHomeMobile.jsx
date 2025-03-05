@@ -9,9 +9,9 @@ import Coordinates from "@/components/Coordinates";
 import ResonateWithFragmentation from "@/components/ResonateWithFragmentation";
 import AllureOfTheAbject from "@/components/AllureOfTheAbject";
 import LimitedIntentionality from "@/components/LimitedIntentionality";
-import { WorksGrid } from "@/components/NewWorksGrid";
 import ExhibitionCellMobile from "@/ExhibitionCellMobile.jsx";
 import LimitedIntentionalityMobile from "@/components/LimitedIntentionalityMobile.jsx";
+import MobileWorksGrid from "@/components/MobileWorksGrid";
 
 const NewHomeMobile = () => {
     const [selectedExhibition, setSelectedExhibition] = useState(null);
@@ -24,11 +24,8 @@ const NewHomeMobile = () => {
         images: exhibition.images || []
     }));
 
-
-
     const scrollToContent = () => {
         const viewportHeight = window.innerHeight;
-
 
         animate(window.scrollY, 0, {
             duration: 0.57,
@@ -72,19 +69,18 @@ const NewHomeMobile = () => {
             {/*    <VideoBackground/>*/}
             {/*</div>*/}
 
-            <div className="fixed top-0 left-1/2 transform -translate-x-1/2 text-[9px] z-50 bg-none">
+            <div className="fixed top-0 left-1/2 transform -translate-x-1/2 text-[10px] z-50 bg-none">
                 <div className="text-center py-8 font-alte-haas font-bold">
                     <div className="mb-0">
                         <span onClick={() => handleNavClick('index')}
                               className="mr-3 cursor-pointer hover:opacity-60">INDEX</span>
-                        <span onClick={() => handleNavClick('contact')}
-                              className="mr-3 cursor-pointer hover:opacity-60">CONTACT</span>
-                        <span onClick={() => handleNavClick('cv')}
-                              className="mr-3 cursor-pointer hover:opacity-60">CV</span>
+
                         <span onClick={() => handleNavClick('email')}
                               className="mr-3 cursor-pointer hover:opacity-60">EMAIL</span>
                         <span onClick={() => handleNavClick('instagram')}
                               className="mr-3 cursor-pointer hover:opacity-60">INSTAGRAM</span>
+                        <span onClick={() => handleNavClick('cv')}
+                              className="mr-3 cursor-pointer hover:opacity-60">CV</span>
                         <span onClick={() => handleNavClick('instagram')}
                               className="cursor-pointer hover:opacity-60">MORE</span>
                     </div>
@@ -108,7 +104,6 @@ const NewHomeMobile = () => {
 
             {/* Spacer for fixed header */}
 
-
             {/* Main Content */}
             <div className="text-sm relative bg-white min-h-screen w-full">
                 {/* Content Area */}
@@ -122,7 +117,7 @@ const NewHomeMobile = () => {
                     {selectedExhibition ? (
                         getExhibitionComponent(selectedExhibition)
                     ) : activeSection === 'works' ? (
-                        <WorksGrid/>
+                        <MobileWorksGrid/>
                     ) : (
                         <div className="flex flex-col items-center space-y-8 pb-40">
                             {exhibitionsData.map((exhibition, index) => (
@@ -138,9 +133,19 @@ const NewHomeMobile = () => {
                     )}
                 </motion.div>
 
-                {/* Footer */}{!selectedExhibition && (
+                {activeSection !== 'exhibitions' && (
+                    <div className="fixed top-[30px] w-screen">
+                        <div className="w-full font-alte-haas tracking-tight font-bold text-[10px] grid grid-cols-2">
+                            <div className="place-self-start text-left ml-4">EDIE XU</div>
+                            <div className="place-self-end text-right mr-4 ">PROJECTS</div>
+                        </div>
+                    </div>
+                )}
+
+
+                {/* Footer */}{activeSection === 'exhibitions' && (
                 <motion.div
-                    className="fixed bottom-1 text-[10px] left-0 w-full flex flex-col items-center font-bold p-2"
+                    className="fixed bottom-1  text-[10px] left-0 w-full flex flex-col items-center font-bold p-2"
                 >
                     <div className="text-">EDIE XU</div>
                     <div className="text-center space-x-4 pt-1">

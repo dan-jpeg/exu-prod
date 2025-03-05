@@ -2,6 +2,7 @@ import WorksComponent from "./WorksComponent.jsx";
 import NewHome from "./NewHome.jsx";
 import WorksNavBar from "@/components/WorksNavBar.jsx";
 import NewHomeMobile from "@/NewHomeMobile.jsx"
+import "./index.css"
 
 
 const App = () => {

@@ -26,6 +26,24 @@
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE & Edge */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+}
+
+.overflow-hidden::-webkit-scrollbar {
+  display: none;
+}
+
 /* Or for fixed elements at bottom */
 .fixed-bottom {
   bottom: env(safe-area-inset-bottom);

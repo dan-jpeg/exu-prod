@@ -98,7 +98,7 @@ const AllureOfTheAbject = () => {
 
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
-            <div ref={photoRef}>
+            <div ref={photoRef} className="pb-40">
                 <ImageContainer images={images}/>
             </div>
 
@@ -106,12 +106,48 @@ const AllureOfTheAbject = () => {
             {/*    <FullWidthPhotoColumn ref={photoRef} images={images} />*/}
             {/*</div>*/}
 
-            <div ref={textRef} className="w-[61vw] lg:w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
-                <p className="indent-4">{loremStack[1]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[2]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[3]}</p>
+            <div ref={textRef}
+                 className="w-[61vw] lg:w-[41vw] mx-auto text-left leading-8  font-bold  text-[2vw] md:text-[14px] pt-44 pb-32">
+                <p className="indent-4 font-helvetica pb-12"> " In her seminal essay Powers of Horror: An Essay on
+                    Abjection (1982), Kristeva described the abject as “fear having been bracketed, … [in confrontation]
+                    with otherness, a burden both repellent and repelled, a deep well of memory that is unapproachable
+                    and intimate.” The abject involves a deconstructing and reconstituting of one’s sense of self, of
+                    peeling back the veneer of civility to see our true selves for what we are. It constitutes the
+                    liberation of our repressed subconscious and desires.Amidst increasing disenchantment with idealism
+                    and romanticism brought upon by our contemporary anxieties it seems we are pervaded by a sense of
+                    desolation. Disillusioned, many of us have begun making a turn towards the abject."</p>
+                <div className="grid grid-cols-7 uppercase place-items-start text-center justify-center">
+                    <div className={`col-span-4 flex-col`}>
+                        <p className="place-self-start">Exhibited with </p>
+                        <div className=" flex flex-row space-x-3">
+                            <p className="">Inaara Vishnani, Maddie May, Riley Lynch</p>
+                            <p className="">& MORE</p>
+
+                        </div>
+                    </div>
+
+                    <div className={`flex-col col-span-3 place-self-end text-right`}>
+
+                        <p>Beijing Commune,
+                            Beijing 2024</p>
+
+                    </div>
+
+                </div>
+
+
             </div>
-            <div className="fixed bottom-2 left-0 w-full text-center">
+            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
+                <span>
+                    EDIE XU
+                </span>
+            </div>
+            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
+                <span>
+                    PROJECTS
+                </span>
+            </div>
+            <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
                     className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
                     <span> ALLURE OF THE ABJECT </span>

@@ -55,7 +55,7 @@ const VideoBackground = ({ onLoadingChange }) => {
             )}
             <video
                 ref={videoRef}
-                className="absolute inset-0 w-full h-full object-contain"
+                className="absolute transform -translate-x-5 inset-0 w-full h-full object-contain"
                 autoPlay
                 muted
                 loop

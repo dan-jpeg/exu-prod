@@ -1,0 +1,13 @@
+.work-included-container p {
+    text-align: center;
+    font-size: 11px;
+}
+
+.work-included-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.images-single img {
+    object-fit: cover;
+}

@@ -19,7 +19,7 @@ const ResonateWithFragmentation = () => {
             const offset = ref === photoRef ? -(window.innerHeight - element.offsetHeight) / 2 : 0;
 
             animate(window.scrollY, elementPosition + offset, {
-                duration: 0.3,
+                duration: 0.4,
                 ease: [0.1, 0.1, 0.9, 0.9],
                 onUpdate: (value) => window.scrollTo(0, value)
             });
@@ -112,23 +112,47 @@ const ResonateWithFragmentation = () => {
 
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
-            <div ref={photoRef}>
+            <div ref={photoRef} className="pb-40 mb-12">
                 <ImageContainer images={images}/>
             </div>
 
-            <WorksList works={workIncluded[0]}/>
-
-
-            <div ref={textRef} className="w-[61vw] lg:w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
-                <p className="indent-4">{loremStack[1]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[2]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[3]}</p>
+            <div className="pt-3  ">
+                <WorksList works={workIncluded[0]}/>
             </div>
 
-            <div className="fixed bottom-2 left-0 w-full text-center">
+
+
+            <div ref={textRef}
+                 className="w-[61vw] lg:w-[54vw] mx-auto text-left leading-8  font-bold text-[2vw] md:text-[1vw]  lg:text-[14px] pt-44 pb-32">
+                <div className="grid grid-cols-4 uppercase place-items-start text-center justify-center">
+                    <div className={`col-span-3 flex-col`}>
+                        <p className="place-self-start">Group Exhibition with </p>
+                        <div className=" flex flex-row space-x-1">
+                            <p className=""> Cheng Tingting, Chen Jiajun, Hu Longxiang,</p>
+                            <p className="">& MORE</p>
+
+                        </div>
+                    </div>
+                    <div className={`flex-col col-span-1 place-self-end text-right`}>
+                        <p>Ginkgo Space, Shanghai</p>
+                        <p>2024</p>
+                    </div>
+                </div>
+            </div>
+            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
+                <span>
+                    EDIE XU
+                </span>
+            </div>
+            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
+                <span>
+                    PROJECTS
+                </span>
+            </div>
+            <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
                     className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
-                    <span> SOMATIC ATTUNEMENT </span>
+                    <span>RESONATE WITH FRAGMENTATION</span>
                     <div className="flex-row space-x-2">
                         <span
                             className={`cursor-pointer transition-opacity ${activeSection === "text" ? "font-bold opacity-100" : "opacity-30 hover:opacity-60"}`}

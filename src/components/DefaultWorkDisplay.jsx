@@ -4,7 +4,7 @@ import ImageContainer from "@/components/ImageContainer.jsx";
 import WorksList from "@/components/WorksList.jsx";
 import {loremStack} from "@/data.js";
 
-const LimitedIntentionality = () => {
+const DefaultWorkDisplay = () => {
     const textRef = useRef(null);
     const photoRef = useRef(null);
     const [activeSection, setActiveSection] = useState("photo");
@@ -14,6 +14,7 @@ const LimitedIntentionality = () => {
         if (element) {
             const elementPosition = element.getBoundingClientRect().top + window.scrollY;
             const offset = ref === photoRef ? -(window.innerHeight - element.offsetHeight) / 2 : 0;
+
             animate(window.scrollY, elementPosition + offset, {
                 duration: 0.3,
                 ease: [0.1, 0.1, 0.9, 0.9],
@@ -41,19 +42,21 @@ const LimitedIntentionality = () => {
     }, []);
 
     const images = [
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/limited-intentionality_01.jpeg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality08-small.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality06-small.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place06%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place04%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place05%400.25x.jpg",
 
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality07small.jpg",
-
-
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality01-small.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality02-small.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality03-small.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality04-small.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality05-small.jpg",
-        ]
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place09%400.2x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place12%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place11%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place07%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place01%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place10%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place08%400.2x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place02%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place03%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/out-of-place_01.jpeg"
+    ]
 
     const workIncluded = [
         {
@@ -93,54 +96,21 @@ const LimitedIntentionality = () => {
 
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
-            <div ref={photoRef} className="pb-40">
+            <div ref={photoRef}>
                 <ImageContainer images={images}/>
             </div>
 
             <WorksList works={workIncluded[0]}/>
             <WorksList works={workIncluded[1]}/>
-            <div ref={textRef}
-                 className="w-[61vw] lg:w-[61vw] mx-auto text-left leading-8  font-bold  text-[14px] pt-44 pb-32">
-                <p className="indent-4 pb-12">Thine air took form as a nostalgia of ones embrace through the memories of
-                    my hands. The back of the piece is slightly cured and bent over showing subtle bumps of one’s spine,
-                    arched into a finger like tentacle. The piece is not glazed, it is made with two different clay,
-                    fired at 1800 degrees creating different texture and color. The black line in the middle of the
-                    ‘torso’ is inspired a daily life encounter of washing shrimp, and being surprised to realize they
-                    actually have two black vein instead of one. ~</p>
-                <div className="grid grid-cols-4 uppercase place-items-start text-center justify-center">
-                    <div className={`col-span-3 flex-col`}>
-                        <p className="place-self-start">Group Exhibition with </p>
-                        <div className=" flex flex-row space-x-3">
-                            <p className="">Cai Lei,</p>
-                            <p className="">Hang Chunhui,</p>
-                            <p className="">Liu Yue,</p>
-                            <p className="">Su Chang,</p>
-                            <p className="">Sun Wenjia
-                            </p></div>
-                    </div>
-                    <div className={`flex-col col-span-1 place-self-end text-right`}>
-                        <p>Shanghart, Shang Hai</p>
-                        <p>2024 03. 22-06. 01</p>
-                    </div>
-
-                </div>
-
-
+            <div ref={textRef} className="w-[61vw] lg:w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
+                <p className="indent-4">{loremStack[1]}{loremStack[4]}</p>
+                <p className="indent-4">{loremStack[2]}{loremStack[4]}</p>
+                <p className="indent-4">{loremStack[3]}</p>
             </div>
-            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
-                <span>
-                    EDIE XU
-                </span>
-            </div>
-            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
-                <span>
-                    PROJECTS
-                </span>
-            </div>
-            <div className="fixed bottom-20 left-0 w-full text-center">
+            <div className="fixed bottom-2 left-0 w-full text-center">
                 <div
-                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
-                    <span> LIMITED INTENTIONALITY</span>
+                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[2vw] md:text-[1vw] lg:text-[12px] justify-center">
+                    <span> OUT OF PLACE </span>
                     <div className="flex-row space-x-2">
                         <span
                             className={`cursor-pointer transition-opacity ${activeSection === "text" ? "font-bold opacity-100" : "opacity-30 hover:opacity-60"}`}
@@ -161,4 +131,4 @@ const LimitedIntentionality = () => {
     );
 };
 
-export default LimitedIntentionality;
+export default DefaultWorkDisplay;

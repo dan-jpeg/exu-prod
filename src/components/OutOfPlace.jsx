@@ -96,18 +96,80 @@ const OutOfPlace = () => {
 
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
-            <div ref={photoRef}>
+            <div ref={photoRef} className="pb-40">
                 <ImageContainer images={images}/>
             </div>
 
             <WorksList works={workIncluded[0]}/>
             <WorksList works={workIncluded[1]}/>
-            <div ref={textRef} className="w-[61vw] lg:w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
-                <p className="indent-4">{loremStack[1]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[2]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[3]}</p>
+            <div className=" w-full grid grid-cols-6 text-[11px] font-bold pb-32">
+                <div className="col-span-2"></div>
+                <div ref={textRef}
+                     className=" col-span-2 mx-auto text-center leading-8  font-bold  text-[1vw] lg:text-[11px] pt-44 ">
+                    <p className="indent-4 font-helvetica pb-12"> " Suspension of distance emerges almost
+                        instantaneously
+                        from Edie Siyi Xu’s juxtaposition of the ponderous and mechanical iron stand and the fossil-like
+                        ceramics: upon closer scrutiny, one notices crevices on the enclosed clay cocoon which hint at
+                        the
+                        mysterious hollow often seen in her work evoking the intuitive sense of belonging. Underlining
+                        the
+                        status of disassociation, Li Shuang, who is absent in her video, recruited 20 performers styled
+                        identically in blunt-cut fringe and spycam-like glasses like the artist herself. The footage of
+                        avatars interacting with Li’s friends through the lens in their glasses unveils a world
+                        infiltrated
+                        by interfaces. We are always connected, always plugged in. If it weren't for a light source on
+                        the
+                        ground, perhaps no one would notice Ge Yulu's Matrix-like diagram map painted on the floor.
+                        Light
+                        has always been the metaphor for the field of vision, but now the flashlight illuminates an
+                        interface for access. The source code sounds remote, maybe the only thing remote; the matrix
+                        should
+                        be preserved in the polar glacier, yet it is close at one’s feet. "</p>
+                </div>
+
+                <div className="col-span-2"></div>
+
+                <div className="col-span-2"></div>
+                <div className="grid col-span-2 grid-cols-7 uppercase place-items-center   text-center justify-center">
+                    <div className={`col-span-7 flex-col`}>
+                        <p className="place-self-center">Group Exhibition with </p>
+                        <div className=" flex flex-row space-x-3">
+                            <p className="">Chang Yuchen,</p>
+                            <p className="">Ge Yulu,</p>
+                            <p className="">Hu Xiaoyuan,</p>
+                            <p className="">& MORE</p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div className="col-span-2"></div>
+                <div className="col-span-2"></div>
+
+                <div className={`flex-col col-span-2 place-self-center text-center`}>
+
+                    <p>Beijing Commune,
+                        Beijing 2024</p>
+
+                </div>
+
+                <div className="col-span-2"></div>
+
             </div>
-            <div className="fixed bottom-2 left-0 w-full text-center">
+
+
+            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
+                <span>
+                    EDIE XU
+                </span>
+            </div>
+            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
+                <span>
+                    PROJECTS
+                </span>
+            </div>
+            <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
                     className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[2vw] md:text-[1vw] lg:text-[12px] justify-center">
                     <span> OUT OF PLACE </span>

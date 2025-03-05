@@ -114,7 +114,7 @@ const SomaticAttunement = () => {
 
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
-            <div ref={photoRef}>
+            <div ref={photoRef} className="pb-40">
                 <ImageContainer images={images}/>
             </div>
 
@@ -122,13 +122,29 @@ const SomaticAttunement = () => {
             {/*    <FullWidthPhotoColumn ref={photoRef} images={images} />*/}
             {/*</div>*/}
 
-            <div ref={textRef} className="w-[61vw] lg:w-[31vw] mx-auto text-left space-y-4 text-[11px] pt-44 pb-32">
-                <p className="indent-4">{loremStack[1]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[2]}{loremStack[4]}</p>
-                <p className="indent-4">{loremStack[3]}</p>
-            </div>
+            <div ref={textRef}
+                 className="w-[61vw] lg:w-[54vw] mx-auto text-left leading-8  font-bold text-[2vw] md:text-[1vw]  lg:text-[14px] pt-44 pb-32">
+                <div className="grid grid-cols-4 uppercase place-items-start text-center justify-center">
+                    <div className={`col-span-3 flex-col`}>
+                        <p className="place-self-start">Group Exhibition with </p>
+                        <div className=" flex flex-row space-x-1">
+                            <p className=""> Cai Lei, Hang Chunhui, Liu Yue, Su Chang</p>
+                            <p className="">& MORE</p>
 
-            <div className="fixed bottom-2 left-0 w-full text-center">
+                        </div>
+                    </div>
+                    <div className={`flex-col col-span-1 place-self-end text-right`}>
+                        <p>Studio Gallery, Shanghai</p>
+                        <p>2021</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+        <ProjectHeaderDefault />
+
+            <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
                     className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
                     <span> SOMATIC ATTUNEMENT </span>
@@ -153,3 +169,20 @@ const SomaticAttunement = () => {
 };
 
 export default SomaticAttunement;
+
+export const ProjectHeaderDefault = () => {
+    return (
+        <>
+            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
+                <span>
+                    EDIE XU
+                </span>
+            </div>
+            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
+                <span>
+                    PROJECTS
+                </span>
+            </div>
+        </>
+    )
+}
