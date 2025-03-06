@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useMotionValueEvent, AnimatePresence, animate } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import VideoBackground from './components/video-background/VideoBackground';
 import ExhibitionCell from './components/ExhibitionCell';
 import OutOfPlace from './components/OutOfPlace';
@@ -10,16 +11,57 @@ import ResonateWithFragmentation from "@/components/ResonateWithFragmentation.js
 import AllureOfTheAbject from "@/components/AllureOfTheAbject.jsx";
 import LimitedIntentionality from "@/components/LimitedIntentionality.jsx";
 import { WorksGrid } from "@/components/NewWorksGrid.jsx";
-import VideoGrid from "@/components/VideoGrid.jsx"; // Import the new VideosGrid component
-import bangerBg from "@/assets/banger_01.jpg"
+import VideoGrid from "@/components/VideoGrid.jsx";
+import bangerBg from "@/assets/banger_01.jpg";
 
-const NewHome = () => {
+const NewHome = ({ initialSection }) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { title } = useParams();
+
     const [selectedExhibition, setSelectedExhibition] = useState(null);
-    const [activeSection, setActiveSection] = useState('exhibitions');
+    const [activeSection, setActiveSection] = useState(initialSection || 'exhibitions');
     const constraintsRef = useRef(null);
     const { scrollY } = useScroll();
     const [showFooter, setShowFooter] = useState(false);
     const [emailCopied, setEmailCopied] = useState(false);
+
+    // Find exhibition by title if route includes a title parameter
+    useEffect(() => {
+        if (title) {
+            const exhibition = exhibitions2.find(
+                ex => ex.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
+            );
+            if (exhibition) {
+                setSelectedExhibition({
+                    title: exhibition.title,
+                    year: exhibition.date.split('.')[0],
+                    images: exhibition.images || []
+                });
+            }
+        }
+    }, [title]);
+
+    // Update active section and selected exhibition based on route
+    useEffect(() => {
+        // Update active section based on route
+        if (initialSection) {
+            setActiveSection(initialSection);
+        } else if (location.pathname === '/' || location.pathname === '') {
+            setActiveSection('exhibitions');
+        } else if (location.pathname.includes('/works') || location.pathname.includes('works')) {
+            setActiveSection('works');
+        } else if (location.pathname.includes('/videos') || location.pathname.includes('videos')) {
+            setActiveSection('videos');
+        } else if (location.pathname.includes('/exhibitions') || location.pathname.includes('exhibitions')) {
+            setActiveSection('exhibitions');
+        }
+
+        // If we're not on an exhibition route, clear the selected exhibition
+        if (!location.pathname.includes('/exhibition/') && !location.pathname.includes('exhibition/')) {
+            setSelectedExhibition(null);
+        }
+    }, [initialSection, location.pathname]);
 
     const exhibitionsData = exhibitions2.map(exhibition => ({
         title: exhibition.title,
@@ -30,17 +72,6 @@ const NewHome = () => {
     useMotionValueEvent(scrollY, "change", (latest) => {
         setShowFooter(latest > 600);
     });
-
-    const scrollToContent = () => {
-        const viewportHeight = window.innerHeight;
-        const targetY = viewportHeight - 130;
-
-        animate(window.scrollY, targetY, {
-            duration: 0.57,
-            ease: [0.1, 0.1, 0.9, 0.9],
-            onUpdate: (value) => window.scrollTo(0, value)
-        });
-    };
 
     const handleCopyEmail = () => {
         navigator.clipboard.writeText('ediexxu@gmail.com')
@@ -57,40 +88,45 @@ const NewHome = () => {
             return;
         }
 
-        scrollToContent();
-
+        // Handle navigation without scrolling for now
         if (section === 'index') {
+            navigate('/', { replace: false });
             setSelectedExhibition(null);
             setActiveSection('exhibitions');
         } else if (section === 'exhibitions' || section === 'works' || section === 'videos') {
+            navigate(`/${section}`);
             setSelectedExhibition(null);
             setActiveSection(section);
         } else if (section === 'more') {
+            navigate('/videos');
             setSelectedExhibition(null);
             setActiveSection('videos');
         }
     };
 
     const handleExhibitionClick = (exhibition) => {
+        const slug = exhibition.title.toLowerCase().replace(/\s+/g, '-');
+        // When navigating to an exhibition, ensure we push to history so back button works
+        navigate(`/exhibition/${slug}`, { replace: false });
         setSelectedExhibition(exhibition);
     };
 
     const getExhibitionComponent = (exhibition) => {
         switch (exhibition.title) {
             case 'Out of place':
-                return <OutOfPlace />;
+                return <OutOfPlace onNavigate={handleNavClick}/>;
             case 'Somatic Attunement':
-                return <SomaticAttunement />;
+                return <SomaticAttunement onNavigate={handleNavClick} />;
             case 'N 39.984036 S 116.496563':
-                return <Coordinates />;
-            case 'Resonate with fragmentation':
-                return <ResonateWithFragmentation />;
+                return <Coordinates onNavigate={handleNavClick} />;
+            case 'Resonate w/ fragmentation':
+                return <ResonateWithFragmentation onNavigate={handleNavClick} />;
             case 'Allure Of The Abject':
-                return <AllureOfTheAbject />;
+                return <AllureOfTheAbject onNavigate={handleNavClick} />;
             case 'limited intentionality':
-                return <LimitedIntentionality />;
+                return <LimitedIntentionality onNavigate={handleNavClick} />;
             default:
-                return <OutOfPlace />;
+                return <OutOfPlace onNavigate={handleNavClick} />;
         }
     };
 
@@ -152,7 +188,6 @@ const NewHome = () => {
                             >
                                 Works
                             </span>
-
                         </div>
                     </div>
                 </div>
@@ -176,7 +211,7 @@ const NewHome = () => {
                             transition={{duration: 0.3}}
                             className="w-full px-8"
                         >
-                            <WorksGrid />
+                            <WorksGrid onNavigate={handleNavClick}/>
                         </motion.div>
                     ) : activeSection === 'videos' ? (
                         <motion.div

@@ -17,7 +17,7 @@ const VideoGrid = () => {
     };
 
     return (
-        <div className="w-full mt-12 pb-32">
+        <div className="w-full  flex place-items-center justify-center mt-12 pb-32">
             <AnimatePresence>
                 {selectedVideo && (
                     <VideoPlayer
@@ -27,7 +27,7 @@ const VideoGrid = () => {
                 )}
             </AnimatePresence>
 
-            <div className="grid grid-cols-6 gap-[4vw]">
+            <div className="md:grid  text-[11px] flex flex-col md:grid-cols-3 pt-10 gap-[2vw]">
                 {videos.map((video) => (
                     <VideoCell
                         key={video.id}

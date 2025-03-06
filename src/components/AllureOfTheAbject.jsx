@@ -4,9 +4,10 @@ import ImageContainer from "@/components/ImageContainer.jsx";
 import WorksList from "@/components/WorksList.jsx";
 import {loremStack} from "@/data.js";
 import {Fullscreen} from "lucide-react";
+import MinimalNav from "@/components/MinimalNav.jsx";
 
 
-const AllureOfTheAbject = () => {
+const AllureOfTheAbject = ({onNavigate}) => {
     const textRef = useRef(null);
     const photoRef = useRef(null);
     const [activeSection, setActiveSection] = useState("photo");
@@ -137,16 +138,7 @@ const AllureOfTheAbject = () => {
 
 
             </div>
-            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
-                <span>
-                    EDIE XU
-                </span>
-            </div>
-            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
-                <span>
-                    PROJECTS
-                </span>
-            </div>
+            <MinimalNav onNavigate={onNavigate} />
             <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
                     className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">

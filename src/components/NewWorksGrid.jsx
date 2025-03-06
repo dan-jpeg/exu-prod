@@ -204,14 +204,15 @@ export const WorkDisplay = ({
 
 // WorksGrid.jsx
 import { selectedWorks } from "@/projects-and-videos.js";
-import HorizontalScroll from "@/components/horizontal-scroll/HorizontalScroll.jsx";
 import FromEarthAndUp from "@/components/FromEarthAndUp.jsx";
-import {ProjectHeaderDefault} from "@/components/SomaticAttunement.jsx";
+import MinimalNav from "@/components/MinimalNav.jsx";
 
-export const WorksGrid = () => {
+export const WorksGrid = ({onNavigate}) => {
     return (
         <div className="w-full mt-12">
-            <ProjectHeaderDefault />
+
+            {/*<MinimalNav onNavigate={onNavigate} />*/}
+
             <WorkDisplay
                 work={selectedWorks[0]}
                 // heightArray={['12vw', '8vw', '6vw', '10vw']}

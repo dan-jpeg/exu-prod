@@ -18,7 +18,7 @@ export const FullWidthPhotoColumn = ({images}) => {
     )
 }
 
-const SomaticAttunement = ({onNavigate}) => {
+const SomaticAttunementMobile = ({onNavigate}) => {
     const textRef = useRef(null);
     const photoRef = useRef(null);
     const [activeSection, setActiveSection] = useState("photo");
@@ -124,9 +124,9 @@ const SomaticAttunement = ({onNavigate}) => {
             {/*</div>*/}
 
             <div ref={textRef}
-                 className="w-[61vw] lg:w-[54vw] mx-auto text-left leading-8  font-bold text-[2vw] md:text-[1vw]  lg:text-[14px] pt-44 pb-32">
-                <div className="grid grid-cols-4 uppercase place-items-start text-center justify-center">
-                    <div className={`col-span-3 flex-col`}>
+                 className="w-full  mx-auto text-left leading-8  font-bold text-[2vw] md:text-[1vw]  lg:text-[14px] pt-44 pb-32">
+                <div className="grid grid-cols-7 uppercase place-items-center text-center justify-center">
+                    <div className={`col-span-7 flex-col`}>
                         <p className="place-self-start">Group Exhibition with </p>
                         <div className=" flex flex-row space-x-1">
                             <p className=""> Cai Lei, Hang Chunhui, Liu Yue, Su Chang</p>
@@ -134,7 +134,7 @@ const SomaticAttunement = ({onNavigate}) => {
 
                         </div>
                     </div>
-                    <div className={`flex-col col-span-1 place-self-end text-right`}>
+                    <div className={`flex-row col-span-7 place-self-center text-center`}>
                         <p>Studio Gallery, Shanghai</p>
                         <p>2021</p>
                     </div>
@@ -144,11 +144,11 @@ const SomaticAttunement = ({onNavigate}) => {
 
             </div>
 
-            <MinimalNav onNavigate={onNavigate}/>
+
 
             <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
-                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[3vw] md:text-[1vw] lg:text-[12px] justify-center">
+                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
                     <span> SOMATIC ATTUNEMENT </span>
                     <div className="flex-row space-x-2">
                         <span
@@ -170,21 +170,5 @@ const SomaticAttunement = ({onNavigate}) => {
     );
 };
 
-export default SomaticAttunement;
+export default SomaticAttunementMobile;
 
-export const ProjectHeaderDefault = () => {
-    return (
-        <>
-            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
-                <span>
-                    EDIE XU
-                </span>
-            </div>
-            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
-                <span>
-                    PROJECTS
-                </span>
-            </div>
-        </>
-    )
-}

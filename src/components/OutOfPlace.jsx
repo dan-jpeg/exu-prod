@@ -3,8 +3,9 @@ import { motion, animate } from 'framer-motion';
 import ImageContainer from "@/components/ImageContainer.jsx";
 import WorksList from "@/components/WorksList.jsx";
 import {loremStack} from "@/data.js";
+import MinimalNav from "@/components/MinimalNav.jsx";
 
-const OutOfPlace = () => {
+const OutOfPlace = ({ onNavigate }) => {
     const textRef = useRef(null);
     const photoRef = useRef(null);
     const [activeSection, setActiveSection] = useState("photo");
@@ -26,7 +27,7 @@ const OutOfPlace = () => {
     useEffect(() => {
         const handleScroll = () => {
             const photoPos = photoRef.current?.getBoundingClientRect().top;
-            const textPos = textRef.current?.getBoundingClientRect().top;
+            const textPos = textRef.current?.getBoundingClientRect().bottom;
 
             if (photoPos !== undefined && textPos !== undefined) {
                 if (Math.abs(photoPos) < Math.abs(textPos)) {
@@ -102,9 +103,9 @@ const OutOfPlace = () => {
 
             <WorksList works={workIncluded[0]}/>
             <WorksList works={workIncluded[1]}/>
-            <div className=" w-full grid grid-cols-6 text-[11px] font-bold pb-32">
+            <div ref={textRef}  className=" w-full grid grid-cols-6 text-[11px] font-bold pb-32">
                 <div className="col-span-2"></div>
-                <div ref={textRef}
+                <div
                      className=" col-span-2 mx-auto text-center leading-8  font-bold  text-[1vw] lg:text-[11px] pt-44 ">
                     <p className="indent-4 font-helvetica pb-12"> " Suspension of distance emerges almost
                         instantaneously
@@ -159,16 +160,7 @@ const OutOfPlace = () => {
             </div>
 
 
-            <div className="fixed top-4 left-8 font-alte-haas font-bold text-[11px] text-left">
-                <span>
-                    EDIE XU
-                </span>
-            </div>
-            <div className="fixed top-4 right-8 font-alte-haas font-bold text-[11px] text-right">
-                <span>
-                    PROJECTS
-                </span>
-            </div>
+   <MinimalNav  onNavigate={onNavigate}/>
             <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
                     className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[2vw] md:text-[1vw] lg:text-[12px] justify-center">

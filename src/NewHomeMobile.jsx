@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { motion, animate, useScroll, useMotionValueEvent } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll } from 'framer-motion';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import VideoBackground from './components/video-background/VideoBackground';
 import ExhibitionCell from './components/ExhibitionCell';
 import { exhibitions2 } from '@/data';
@@ -12,11 +13,45 @@ import LimitedIntentionality from "@/components/LimitedIntentionality";
 import ExhibitionCellMobile from "@/ExhibitionCellMobile.jsx";
 import LimitedIntentionalityMobile from "@/components/LimitedIntentionalityMobile.jsx";
 import MobileWorksGrid from "@/components/MobileWorksGrid";
+import OutOfPlaceMobile from "@/components/OutOfPlaceMobile.jsx";
+import WorksGrid from "@/components/NewWorksGrid.jsx";
+import SomaticAttunementMobile from "@/components/SomaticAttunementMobile.jsx";
+import VideoGrid from "@/components/VideoGrid.jsx";
 
-const NewHomeMobile = () => {
+const NewHomeMobile = ({ initialSection }) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { title } = useParams();
+
     const [selectedExhibition, setSelectedExhibition] = useState(null);
-    const [activeSection, setActiveSection] = useState('exhibitions');
+    const [activeSection, setActiveSection] = useState(initialSection || 'exhibitions');
     const { scrollY } = useScroll();
+    const [emailCopied, setEmailCopied] = useState(false);
+
+    // Find exhibition by title if route includes a title parameter
+    useEffect(() => {
+        if (title) {
+            const exhibition = exhibitions2.find(
+                ex => ex.title.toLowerCase().replace(/\s+/g, '-') === title.toLowerCase()
+            );
+            if (exhibition) {
+                setSelectedExhibition({
+                    title: exhibition.title,
+                    year: exhibition.date.split('.')[0],
+                    images: exhibition.images || []
+                });
+            }
+        }
+    }, [title]);
+
+    // Update active section based on route
+    useEffect(() => {
+        if (initialSection) {
+            setActiveSection(initialSection);
+        } else if (location.pathname === '/') {
+            setActiveSection('exhibitions');
+        }
+    }, [initialSection, location.pathname]);
 
     const exhibitionsData = exhibitions2.map(exhibition => ({
         title: exhibition.title,
@@ -24,41 +59,67 @@ const NewHomeMobile = () => {
         images: exhibition.images || []
     }));
 
-    const scrollToContent = () => {
-        const viewportHeight = window.innerHeight;
+    const handleCopyEmail = () => {
+        navigator.clipboard.writeText('ediexxu@gmail.com')
+            .then(() => {
+                setEmailCopied(true);
+                setTimeout(() => setEmailCopied(false), 2000);
+            })
+            .catch(err => console.error('Failed to copy email:', err));
+    };
 
-        animate(window.scrollY, 0, {
-            duration: 0.57,
-            ease: [0.1, 0.1, 0.9, 0.9],
-            onUpdate: (value) => window.scrollTo(0, value)
+    // For mobile, we might want to scroll to a different position
+    const scrollToMobileContentArea = () => {
+        // For mobile, we might want to scroll to the top navigation area
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     };
 
     const handleNavClick = (section) => {
-        scrollToContent();
+        // Special handlers that don't require routing
+        if (section === 'email') {
+            handleCopyEmail();
+            return;
+        } else if (section === 'instagram') {
+            window.open('https://www.instagram.com/e__xu/', '_blank');
+            return;
+        } else if (section === 'cv') {
+            window.open('https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/assets/Edie+X+Resume-1.pdf', '_blank');
+            return;
+        }
 
+        // Scroll before navigation
+        scrollToMobileContentArea();
+
+        // Handle navigation
         if (section === 'index') {
+            navigate('/');
             setSelectedExhibition(null);
             setActiveSection('exhibitions');
-        } else if (section === 'exhibitions' || section === 'works') {
+        } else if (section === 'exhibitions' || section === 'works' || section === 'videos') {
+            navigate(`/${section}`);
             setSelectedExhibition(null);
             setActiveSection(section);
         }
     };
 
     const handleExhibitionClick = (exhibition) => {
+        const slug = exhibition.title.toLowerCase().replace(/\s+/g, '-');
+        navigate(`/exhibition/${slug}`);
         setSelectedExhibition(exhibition);
     };
 
     const getExhibitionComponent = (exhibition) => {
         switch (exhibition.title) {
-            case 'Out of place': return <OutOfPlace />;
-            case 'Somatic Attunement': return <SomaticAttunement />;
-            case 'N 39.984036 S 116.496563': return <Coordinates />;
-            case 'Resonate with fragmentation': return <ResonateWithFragmentation />;
-            case 'Allure Of The Abject': return <AllureOfTheAbject />;
-            case 'limited intentionality': return <LimitedIntentionalityMobile />;
-            default: return <OutOfPlace />;
+            case 'Out of place': return <OutOfPlaceMobile onNavigate={handleNavClick} />;
+            case 'Somatic Attunement': return <SomaticAttunementMobile onNavigate={handleNavClick} />;
+            case 'N 39.984036 S 116.496563': return <Coordinates onNavigate={handleNavClick} />;
+            case 'Resonate w/ fragmentation': return <ResonateWithFragmentation onNavigate={handleNavClick} />;
+            case 'Allure Of The Abject': return <AllureOfTheAbject onNavigate={handleNavClick} />;
+            case 'limited intentionality': return <LimitedIntentionalityMobile onNavigate={handleNavClick} />;
+            default: return <OutOfPlace onNavigate={handleNavClick} />;
         }
     };
 
@@ -76,33 +137,32 @@ const NewHomeMobile = () => {
                               className="mr-3 cursor-pointer hover:opacity-60">INDEX</span>
 
                         <span onClick={() => handleNavClick('email')}
-                              className="mr-3 cursor-pointer hover:opacity-60">EMAIL</span>
+                              className="mr-3 cursor-pointer hover:opacity-60">
+                            {emailCopied ? 'EMAIL COPIED :)' : 'EMAIL'}
+                        </span>
                         <span onClick={() => handleNavClick('instagram')}
                               className="mr-3 cursor-pointer hover:opacity-60">INSTAGRAM</span>
                         <span onClick={() => handleNavClick('cv')}
                               className="mr-3 cursor-pointer hover:opacity-60">CV</span>
-                        <span onClick={() => handleNavClick('instagram')}
-                              className="cursor-pointer hover:opacity-60">MORE</span>
+                        <span onClick={() => handleNavClick('videos')}
+                              className="cursor-pointer hover:opacity-60">VIDEO</span>
                     </div>
                     <div className="">
-                            <span
-                                onClick={() => handleNavClick('exhibitions')}
-                                className={`mr-4 cursor-pointer hover:opacity-60 ${activeSection === 'exhibitions' ? 'font-bold' : 'font-normal'}`}
-                            >
-                                Exhibitions
-                            </span>
+                        <span
+                            onClick={() => handleNavClick('exhibitions')}
+                            className={`mr-4 cursor-pointer hover:opacity-60 ${activeSection === 'exhibitions' ? 'font-bold' : 'font-normal'}`}
+                        >
+                            Exhibitions
+                        </span>
                         <span
                             onClick={() => handleNavClick('works')}
                             className={`mr-4 cursor-pointer hover:opacity-60 ${activeSection === 'works' ? 'font-bold' : 'font-normal'}`}
                         >
-                                Works
-                            </span>
-
+                            Works
+                        </span>
                     </div>
                 </div>
             </div>
-
-            {/* Spacer for fixed header */}
 
             {/* Main Content */}
             <div className="text-sm relative bg-white min-h-screen w-full">
@@ -117,7 +177,9 @@ const NewHomeMobile = () => {
                     {selectedExhibition ? (
                         getExhibitionComponent(selectedExhibition)
                     ) : activeSection === 'works' ? (
-                        <MobileWorksGrid/>
+                        <WorksGrid onNavigate={handleNavClick}/>
+                    ) : activeSection === 'videos' ? (
+                        <VideoGrid />
                     ) : (
                         <div className="flex flex-col items-center space-y-8 pb-40">
                             {exhibitionsData.map((exhibition, index) => (
@@ -142,18 +204,18 @@ const NewHomeMobile = () => {
                     </div>
                 )}
 
-
-                {/* Footer */}{activeSection === 'exhibitions' && (
-                <motion.div
-                    className="fixed bottom-1  text-[10px] left-0 w-full flex flex-col items-center font-bold p-2"
-                >
-                    <div className="text-">EDIE XU</div>
-                    <div className="text-center space-x-4 pt-1">
-                        <span>COPYRIGHT 2024</span>
-                        <span>@COMMON-DESIGN</span>
-                    </div>
-                </motion.div>
-            )}
+                {/* Footer */}
+                {activeSection === 'exhibitions' && !selectedExhibition && (
+                    <motion.div
+                        className="fixed bottom-8 text-[10px] left-0 w-full flex flex-col items-center font-bold p-2"
+                    >
+                        <div className="text-">EDIE XU</div>
+                        <div className="text-center space-x-4 pt-1">
+                            <span>COPYRIGHT 2025</span>
+                            <span>@COMMON-DESIGN</span>
+                        </div>
+                    </motion.div>
+                )}
             </div>
         </div>
     );
