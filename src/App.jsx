@@ -6,8 +6,45 @@ import WorksNavBar from "@/components/WorksNavBar.jsx";
 import NewHomeMobile from "@/NewHomeMobile.jsx";
 import "./index.css";
 
-// Empty component that does nothing for now
-function NoOpScroll() {
+// Custom scroll restoration component that handles different device types
+function ScrollToContentArea() {
+    const { pathname } = useLocation();
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        // For the home route with minimal scrolling, don't change position
+        if ((pathname === '/' || pathname === '') && window.scrollY < 100) {
+            return;
+        }
+
+        // Different scroll behavior based on device type
+        if (isMobile) {
+            // Mobile scrolls to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            // Desktop scrolls to content area
+            const viewportHeight = window.innerHeight;
+            const targetY = viewportHeight - 130;
+
+            window.scrollTo({
+                top: targetY,
+                behavior: 'smooth'
+            });
+        }
+    }, [pathname, isMobile]);
+
     return null;
 }
 
@@ -20,13 +57,14 @@ function ResponsiveRouter() {
             setIsMobile(window.innerWidth <= 768);
         };
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize)
+        ;
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (
         <BrowserRouter>
-            <NoOpScroll />
+            <ScrollToContentArea />
             <Routes>
                 {/* Add routes for both with and without trailing slash */}
                 <Route path="/" element={isMobile ? <NewHomeMobile /> : <NewHome />} />

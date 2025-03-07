@@ -23,7 +23,7 @@ const FromEarthAndUp = () => {
       {/*  </div>*/}
       {/*  <div className="fixed  md:fixed bottom-[30vh] left-[10vw] flex flex-col  italic justify-center place-items-center"></div>*/}
       {/*</div>*/}
-      <div className="project-image-container">
+      <div className="project-image-container pt-[10vh]">
         <img className="images-single" src={images[0]} alt="img-1" />
         <div className="grid grid-cols-3   text-[10px] place-items-center ">
           <div className="col-span-3 italic  mt-4">

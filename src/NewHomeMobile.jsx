@@ -17,6 +17,7 @@ import OutOfPlaceMobile from "@/components/OutOfPlaceMobile.jsx";
 import WorksGrid from "@/components/NewWorksGrid.jsx";
 import SomaticAttunementMobile from "@/components/SomaticAttunementMobile.jsx";
 import VideoGrid from "@/components/VideoGrid.jsx";
+import WorksGridMobile from "@/components/NewWorksGridMobile.jsx";
 
 const NewHomeMobile = ({ initialSection }) => {
     const navigate = useNavigate();
@@ -44,12 +45,24 @@ const NewHomeMobile = ({ initialSection }) => {
         }
     }, [title]);
 
-    // Update active section based on route
+    // Update active section and selected exhibition based on route
     useEffect(() => {
+        // Update active section based on route
         if (initialSection) {
             setActiveSection(initialSection);
-        } else if (location.pathname === '/') {
+        } else if (location.pathname === '/' || location.pathname === '') {
             setActiveSection('exhibitions');
+        } else if (location.pathname.includes('/works') || location.pathname.includes('works')) {
+            setActiveSection('works');
+        } else if (location.pathname.includes('/videos') || location.pathname.includes('videos')) {
+            setActiveSection('videos');
+        } else if (location.pathname.includes('/exhibitions') || location.pathname.includes('exhibitions')) {
+            setActiveSection('exhibitions');
+        }
+
+        // If we're not on an exhibition route, clear the selected exhibition
+        if (!location.pathname.includes('/exhibition/') && !location.pathname.includes('exhibition/')) {
+            setSelectedExhibition(null);
         }
     }, [initialSection, location.pathname]);
 
@@ -70,7 +83,7 @@ const NewHomeMobile = ({ initialSection }) => {
 
     // For mobile, we might want to scroll to a different position
     const scrollToMobileContentArea = () => {
-        // For mobile, we might want to scroll to the top navigation area
+        // For mobile, we'll scroll to the top of the content
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -95,7 +108,8 @@ const NewHomeMobile = ({ initialSection }) => {
 
         // Handle navigation
         if (section === 'index') {
-            navigate('/');
+            // Ensure we're properly adding the home route to history
+            navigate('/', { replace: false });
             setSelectedExhibition(null);
             setActiveSection('exhibitions');
         } else if (section === 'exhibitions' || section === 'works' || section === 'videos') {
@@ -106,8 +120,13 @@ const NewHomeMobile = ({ initialSection }) => {
     };
 
     const handleExhibitionClick = (exhibition) => {
+        // Scroll to the mobile content area first
+        scrollToMobileContentArea();
+
+        // Then navigate to the exhibition
         const slug = exhibition.title.toLowerCase().replace(/\s+/g, '-');
-        navigate(`/exhibition/${slug}`);
+        // Ensure proper history entry for back navigation
+        navigate(`/exhibition/${slug}`, { replace: false });
         setSelectedExhibition(exhibition);
     };
 
@@ -177,7 +196,7 @@ const NewHomeMobile = ({ initialSection }) => {
                     {selectedExhibition ? (
                         getExhibitionComponent(selectedExhibition)
                     ) : activeSection === 'works' ? (
-                        <WorksGrid onNavigate={handleNavClick}/>
+                        <WorksGridMobile onNavigate={handleNavClick}/>
                     ) : activeSection === 'videos' ? (
                         <VideoGrid />
                     ) : (

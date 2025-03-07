@@ -82,13 +82,27 @@ const NewHome = ({ initialSection }) => {
             .catch(err => console.error('Failed to copy email:', err));
     };
 
+    // Helper function to scroll to content area
+    const scrollToContentArea = () => {
+        const viewportHeight = window.innerHeight;
+        const targetY = viewportHeight - 130;
+
+        window.scrollTo({
+            top: targetY,
+            behavior: 'smooth'
+        });
+    };
+
     const handleNavClick = (section) => {
         if (section === 'instagram') {
             // Instagram link is handled by the anchor tag
             return;
         }
 
-        // Handle navigation without scrolling for now
+        // First scroll to the appropriate area
+        scrollToContentArea();
+
+        // Then handle navigation
         if (section === 'index') {
             navigate('/', { replace: false });
             setSelectedExhibition(null);
@@ -105,6 +119,10 @@ const NewHome = ({ initialSection }) => {
     };
 
     const handleExhibitionClick = (exhibition) => {
+        // Scroll to the content area first
+        scrollToContentArea();
+
+        // Then navigate to the exhibition
         const slug = exhibition.title.toLowerCase().replace(/\s+/g, '-');
         // When navigating to an exhibition, ensure we push to history so back button works
         navigate(`/exhibition/${slug}`, { replace: false });
@@ -147,8 +165,8 @@ const NewHome = ({ initialSection }) => {
                         <div className="mb-0">
                             <span onClick={() => handleNavClick('index')}
                                   className="mr-4 cursor-pointer hover:opacity-60">INDEX</span>
-                            <span onClick={() => handleNavClick('contact')}
-                                  className="mr-4 cursor-pointer hover:opacity-60">CONTACT</span>
+                            {/*<span onClick={() => handleNavClick('contact')}*/}
+                            {/*      className="mr-4 cursor-pointer hover:opacity-60">CONTACT</span>*/}
                             <a
                                 className="mr-4 cursor-pointer hover:opacity-60"
                                 href="https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/assets/Edie+X+Resume-1.pdf"

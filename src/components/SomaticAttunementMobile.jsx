@@ -46,7 +46,7 @@ const SomaticAttunementMobile = ({onNavigate}) => {
             console.log('Text pos:', textPos);
 
             if (photoPos !== undefined && textPos !== undefined) {
-                if (Math.abs(photoPos) < Math.abs(textPos-200)) {
+                if (Math.abs(photoPos) < Math.abs(textPos - 300)) {
                     console.log('Setting active to photo');
                     setActiveSection("photo");
                 } else {
