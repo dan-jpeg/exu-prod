@@ -18,6 +18,7 @@ import WorksGrid from "@/components/NewWorksGrid.jsx";
 import SomaticAttunementMobile from "@/components/SomaticAttunementMobile.jsx";
 import VideoGrid from "@/components/VideoGrid.jsx";
 import WorksGridMobile from "@/components/NewWorksGridMobile.jsx";
+import MinimalNav from "@/components/MinimalNav.jsx";
 
 const NewHomeMobile = ({ initialSection }) => {
     const navigate = useNavigate();
@@ -214,13 +215,8 @@ const NewHomeMobile = ({ initialSection }) => {
                     )}
                 </motion.div>
 
-                {activeSection !== 'exhibitions' && (
-                    <div className="fixed top-[30px] w-screen">
-                        <div className="w-full font-alte-haas tracking-tight font-bold text-[10px] grid grid-cols-2">
-                            <div className="place-self-start text-left ml-4">EDIE XU</div>
-                            <div className="place-self-end text-right mr-4 ">PROJECTS</div>
-                        </div>
-                    </div>
+                {activeSection !== 'exhibitions'  && activeSection !== 'videos' && (
+                   <MinimalNav onNavigate={handleNavClick} />
                 )}
 
                 {/* Footer */}

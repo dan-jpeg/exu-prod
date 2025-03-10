@@ -37,6 +37,8 @@ export const WorkDisplayMobile = ({
         }
     }
 
+
+
     return (
         <div className="w-full py-12">
             <AnimatePresence>

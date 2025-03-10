@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const VideoCell = ({ title, year, duration, thumbnail, onClick }) => {
     return (
         <div
-            className="grid grid-rows-[auto_1fr] lg:max-w-[400px] cursor-zoom-in"
+            className="grid grid-rows-[auto_1fr] pb-8 lg:max-w-[400px] cursor-zoom-in"
             style={{ gridTemplateRows: "auto minmax(20px, auto)" }}
             onClick={onClick}
         >

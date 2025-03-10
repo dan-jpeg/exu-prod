@@ -268,7 +268,7 @@ const videos = [
         videoUrl:
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/ceramic_meets_metal_1.mp4",
         thumbnail:
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/%E3%80%8A%E7%9F%B3%E5%AD%90%E8%B7%AF%E3%80%8B_thumbnail.jpeg",
+            "https://firebasestorage.googleapis.com/v0/b/common-base-d538e.firebasestorage.app/o/cmmmc-thumb.png?alt=media&token=fc41aee9-96ff-4983-bdab-7abd63ddda8e",
     },
     {
         id: "v9",
@@ -279,7 +279,7 @@ const videos = [
         videoUrl:
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/ceramic_metal_closeup.mp4",
         thumbnail:
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/%E3%80%8A%E7%9F%B3%E5%AD%90%E8%B7%AF%E3%80%8B_thumbnail.jpeg",
+            "https://firebasestorage.googleapis.com/v0/b/common-base-d538e.firebasestorage.app/o/cmmc-cu-thumbnail.png?alt=media&token=840eaef8-c36a-44b3-ad51-e72fe825fa9e",
     },
 
     {
@@ -335,7 +335,7 @@ const videos = [
         videoUrl:
             "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/videos/untitled.mp4",
         thumbnail:
-            "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/%E3%80%8A%E7%9F%B3%E5%AD%90%E8%B7%AF%E3%80%8B_thumbnail.jpeg",
+            "https://firebasestorage.googleapis.com/v0/b/common-base-d538e.firebasestorage.app/o/untitled-thumb.png?alt=media&token=6e577c11-d944-4a78-a59b-4d76f2fe4421",
     },
 
 ];

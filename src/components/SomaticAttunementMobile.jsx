@@ -124,27 +124,23 @@ const SomaticAttunementMobile = ({onNavigate}) => {
             {/*</div>*/}
 
             <div ref={textRef}
-                 className="w-full  mx-auto text-left leading-8  font-bold text-[2vw] md:text-[1vw]  lg:text-[14px] pt-44 pb-32">
-                <div className="grid grid-cols-7 uppercase place-items-center text-center justify-center">
-                    <div className={`col-span-7 flex-col`}>
-                        <p className="place-self-start">Group Exhibition with </p>
-                        <div className=" flex flex-row space-x-1">
-                            <p className=""> Cai Lei, Hang Chunhui, Liu Yue, Su Chang</p>
-                            <p className="">& MORE</p>
-
+                 className="w-full mx-auto max-w-[270px] text-left  leading-8 font-bold text-[2vw] md:text-[1vw] lg:text-[14px] pt-44 pb-32">
+                <div className="grid grid-cols-7 uppercase text-center">
+                    <div className="col-span-7 flex flex-col items-start">
+                        <p className="text-right mr-4">Group Exhibition with</p>
+                        <div className="flex flex-row space-x-1">
+                            <p>Cai Lei, Hang Chunhui, Liu Yue, Su Chang</p>
+                            <p>& MORE</p>
                         </div>
                     </div>
-                    <div className={`flex-row col-span-7 place-self-center text-center`}>
-                        <p>Studio Gallery, Shanghai</p>
-                        <p>2021</p>
+
+                    {/* Ensure alignment with the rest of the content */}
+                    <div className="col-span-7 flex justify-between w-full items-center mt-2">
+                        <p className="text-left">Studio Gallery, Shanghai</p>
+                        <p className="text-right">2021</p>
                     </div>
-
                 </div>
-
-
             </div>
-
-
 
             <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
