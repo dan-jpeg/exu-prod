@@ -5,7 +5,7 @@ import WorksList from "@/components/WorksList.jsx";
 import {loremStack} from "@/data.js";
 import MinimalNav from "@/components/MinimalNav.jsx";
 
-const OutOfPlaceMobile = ({onNavigate}) => {
+const LimitedIntentionalityMobi = ({onNavigate}) => {
     const textRef = useRef(null);
     const photoRef = useRef(null);
     const [activeSection, setActiveSection] = useState("photo");
@@ -15,7 +15,6 @@ const OutOfPlaceMobile = ({onNavigate}) => {
         if (element) {
             const elementPosition = element.getBoundingClientRect().top + window.scrollY;
             const offset = ref === photoRef ? -(window.innerHeight - element.offsetHeight) / 2 : 0;
-
             animate(window.scrollY, elementPosition + offset, {
                 duration: 0.3,
                 ease: [0.1, 0.1, 0.9, 0.9],
@@ -43,20 +42,18 @@ const OutOfPlaceMobile = ({onNavigate}) => {
     }, []);
 
     const images = [
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place06%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place04%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place05%400.25x.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/limited-intentionality_01.jpeg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality08-small.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality06-small.jpg",
 
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place09%400.2x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place12%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place11%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place07%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place01%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place10%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place08%400.2x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place02%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/OUT-of-small/out-of-place03%400.25x.jpg",
-        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/edie+exhib+cover+photos/out-of-place_01.jpeg"
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited_intentionality07small.jpg",
+
+
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality01-small.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality02-small.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality03-small.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality04-small.jpg",
+        "https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/photos/limited-intentionality05-small.jpg",
         ]
 
     const workIncluded = [
@@ -97,45 +94,33 @@ const OutOfPlaceMobile = ({onNavigate}) => {
 
     return (
         <div className="relative font-alte-haas justify-center place-content-center w-full">
-            <div ref={photoRef}>
+            <div ref={photoRef} className="pb-32">
                 <ImageContainer images={images}/>
             </div>
 
-            <MinimalNav onNavigate={onNavigate} />
-
-
             <WorksList works={workIncluded[0]}/>
             <WorksList works={workIncluded[1]}/>
-            <div  className=" w-full grid grid-cols-6 text-[11px] font-bold pb-32">
+            <div className=" w-full grid grid-cols-6 text-[11px] font-bold pb-32">
                 <div className="col-span-1"></div>
                 <div
 
                     className=" col-span-4 mx-auto text-center leading-8  font-bold  text-[11px] lg:text-[11px] pt-44 ">
-                    <p className="indent-4 font-helvetica pb-12"> " Suspension of distance emerges almost
-                        instantaneously
-                        from Edie Siyi Xu’s juxtaposition of the ponderous and mechanical iron stand and the fossil-like
-                        ceramics: upon closer scrutiny, one notices crevices on the enclosed clay cocoon which hint at
-                        the
-                        mysterious hollow often seen in her work evoking the intuitive sense of belonging. Underlining
-                        the
-                        status of disassociation, Li Shuang, who is absent in her video, recruited 20 performers styled
-                        identically in blunt-cut fringe and spycam-like glasses like the artist herself. The footage of
-                        avatars interacting with Li’s friends through the lens in their glasses unveils a world
-                        infiltrated
-                        by interfaces. We are always connected, always plugged in. If it weren't for a light source on
-                        the
-                        ground, perhaps no one would notice Ge Yulu's Matrix-like diagram map painted on the floor.
-                        Light
-                        has always been the metaphor for the field of vision, but now the flashlight illuminates an
-                        interface for access. The source code sounds remote, maybe the only thing remote; the matrix
-                        should
-                        be preserved in the polar glacier, yet it is close at one’s feet. "</p>
+                    <p className="indent-4 font-helvetica pb-12"> Thine air took form as a nostalgia of ones embrace
+                        through the memories of
+                        my hands. The back of the piece is slightly cured and bent over showing subtle bumps of one’s
+                        spine,
+                        arched into a finger like tentacle. The piece is not glazed, it is made with two different clay,
+                        fired at 1800 degrees creating different texture and color. The black line in the middle of the
+                        ‘torso’ is inspired a daily life encounter of washing shrimp, and being surprised to realize
+                        they
+                        actually have two black vein instead of one.</p>
                 </div>
 
                 <div className="col-span-1"></div>
 
                 <div className="col-span-2"></div>
-                <div ref={textRef} className="grid col-span-2  grid-cols-7 uppercase place-items-center   text-center justify-center">
+                <div ref={textRef}
+                     className="grid col-span-2  grid-cols-7 uppercase place-items-center   text-center justify-center">
                     <div className={`col-span-7 flex-col`}>
                         <p className="place-self-center">Group Exhibition with </p>
                         <div className=" flex flex-row space-x-3">
@@ -152,7 +137,7 @@ const OutOfPlaceMobile = ({onNavigate}) => {
                 <div className="col-span-2"></div>
                 <div className="col-span-2"></div>
 
-                <div className={`flex-col col-span-2 place-self-center text-center`}>
+                <div className={`flex-col col-span-2 pt-12 place-self-center text-center`}>
 
                     <p>Beijing Commune,
                         Beijing 2024</p>
@@ -161,11 +146,13 @@ const OutOfPlaceMobile = ({onNavigate}) => {
 
                 <div className="col-span-2"></div>
 
+
             </div>
-            <div className="fixed bottom-8 left-0 w-full text-center">
+            <MinimalNav onNavigate={onNavigate}/>
+            <div className="fixed bottom-20 left-0 w-full text-center">
                 <div
-                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text-[3vw] md:text-[1vw] lg:text-[12px] justify-center">
-                    <span> OUT OF PLACE </span>
+                    className="flex flex-row space-x-10 items-center font-alte-haas font-bold text[2vw] md:text-[1vw] lg:text-[12px] justify-center">
+                    <span> LIMITED INTENTIONALITY</span>
                     <div className="flex-row space-x-2">
                         <span
                             className={`cursor-pointer transition-opacity ${activeSection === "text" ? "font-bold opacity-100" : "opacity-30 hover:opacity-60"}`}
@@ -186,4 +173,4 @@ const OutOfPlaceMobile = ({onNavigate}) => {
     );
 };
 
-export default OutOfPlaceMobile;
+export default LimitedIntentionalityMobi;

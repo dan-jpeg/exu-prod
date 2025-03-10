@@ -11,7 +11,7 @@ import ResonateWithFragmentation from "@/components/ResonateWithFragmentation";
 import AllureOfTheAbject from "@/components/AllureOfTheAbject";
 import LimitedIntentionality from "@/components/LimitedIntentionality";
 import ExhibitionCellMobile from "@/ExhibitionCellMobile.jsx";
-import LimitedIntentionalityMobile from "@/components/LimitedIntentionalityMobile.jsx";
+import LimitedIntentionalityMobi from "@/components/LimitedIntentionalityMobi.jsx";
 import MobileWorksGrid from "@/components/MobileWorksGrid";
 import OutOfPlaceMobile from "@/components/OutOfPlaceMobile.jsx";
 import WorksGrid from "@/components/NewWorksGrid.jsx";
@@ -137,7 +137,7 @@ const NewHomeMobile = ({ initialSection }) => {
             case 'N 39.984036 S 116.496563': return <Coordinates onNavigate={handleNavClick} />;
             case 'Resonate w/ fragmentation': return <ResonateWithFragmentation onNavigate={handleNavClick} />;
             case 'Allure Of The Abject': return <AllureOfTheAbject onNavigate={handleNavClick} />;
-            case 'limited intentionality': return <LimitedIntentionalityMobile onNavigate={handleNavClick} />;
+            case 'limited intentionality': return <LimitedIntentionalityMobi onNavigate={handleNavClick} />;
             default: return <OutOfPlace onNavigate={handleNavClick} />;
         }
     };

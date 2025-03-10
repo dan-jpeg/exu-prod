@@ -209,7 +209,7 @@ import MinimalNav from "@/components/MinimalNav.jsx";
 
 export const WorksGrid = ({onNavigate}) => {
     return (
-        <div className="w-full mt-12">
+        <div className="w-full pb-[11000px] mt-12">
 
             <MinimalNav onNavigate={onNavigate} />
 

@@ -151,13 +151,18 @@ const NewHome = ({ initialSection }) => {
     return (
         <div className="relative min-h-screen w-full overflow-x-hidden">
             <div className="fixed inset-0 w-full h-full">
-                <VideoBackground />
-                <div className="font-davinci text-white opacity-0 md:opacity-90 -tracking-2p text-[24px] fixed top-4 left-8">
-                    edie xu
+                <VideoBackground/>
+                <div
+                    className="font-alte-haas text-white opacity-0 md:opacity-90  font-bold -tracking-2p text-[12px] fixed top-2/3 left-1/2 transform -translate-x-1/2">
+                    EDIE XU
                 </div>
+                {/*<div*/}
+                {/*    className="font-alte-haas text-white opacity-0 md:opacity-90  font-bold -tracking-2p text-[12px] fixed top-2 left-4">*/}
+                {/*    EDIE XU*/}
+                {/*</div>*/}
             </div>
 
-            <div className="h-[calc(100vh-132px)] w-full" />
+            <div className="h-[calc(100vh-132px)] w-full"/>
 
             <div className="text-[1vw] lg:text-[11px] relative bg-white min-h-screen w-full">
                 <div className="sticky top-0 z-50 bg-white">
