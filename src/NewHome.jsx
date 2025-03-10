@@ -247,9 +247,9 @@ const NewHome = ({ initialSection }) => {
                             animate={{opacity: 1, y: 0}}
                             exit={{opacity: 0, y: -20}}
                             transition={{duration: 0.3}}
-                            className="flex flex-col items-center px-8"
+                            className="flex flex-col  items-center px-8"
                         >
-                            <div className="w-full overflow-hidden relative" ref={constraintsRef}>
+                            <div className="w-full  max-w-screen-3xl overflow-hidden relative" ref={constraintsRef}>
                                 <div className="flex min-w-full">
                                     <div className="grid grid-cols-6 gap-[4vw] w-full">
                                         {exhibitionsData.map((exhibition, index) => (

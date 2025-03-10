@@ -211,7 +211,7 @@ export const WorksGrid = ({onNavigate}) => {
     return (
         <div className="w-full mt-12">
 
-            {/*<MinimalNav onNavigate={onNavigate} />*/}
+            <MinimalNav onNavigate={onNavigate} />
 
             <WorkDisplay
                 work={selectedWorks[0]}
