@@ -209,7 +209,7 @@ import MinimalNav from "@/components/MinimalNav.jsx";
 
 export const WorksGrid = ({onNavigate}) => {
     return (
-        <div className="w-full pb-[11000px] mt-12">
+        <div className="w-full  mt-12">
 
             <MinimalNav onNavigate={onNavigate} />
 
@@ -282,6 +282,11 @@ export const WorksGrid = ({onNavigate}) => {
 
 
 
+            <div className="w-full h-screen flex justify-center place-items-center" >
+                <span
+                    className="cursor-n-resize sepia hover:opacity-10"
+                    onClick={() => onNavigate('works')}> RETURN TO TOP</span>
+            </div>
 
             {/* Add more WorkDisplay components with custom heightArrays as needed */}
         </div>

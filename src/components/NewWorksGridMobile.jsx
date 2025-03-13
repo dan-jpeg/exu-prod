@@ -211,7 +211,7 @@ import MinimalNav from "@/components/MinimalNav.jsx";
 
 export const WorksGridMobile = ({onNavigate}) => {
     return (
-        <div className="w-full mt-12">
+        <div className="w-full mt-[28vh]">
 
             {/*<MinimalNav onNavigate={onNavigate} />*/}
 

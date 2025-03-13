@@ -1,6 +1,5 @@
 
-
-const selectedWorks = [
+    const selectedWorks = [
     // {
     //     id: "0",
     //     category: " ",
@@ -261,7 +260,7 @@ const videos = [
     },
     {
         id: "v8",
-        title: "Ceramic Meets Metal Meets Ceramic ",
+        title: "CMMMC",
         safeTitle: "CMMMC0",
         year: "2022",
         duration: "11min",
@@ -272,7 +271,7 @@ const videos = [
     },
     {
         id: "v9",
-        title: "Ceramic Meets Metal Meets Ceramic (close up)",
+        title: "CMMMC (close up)",
         safeTitle: "CMMMC1",
         year: "2022",
         duration: "15min",
