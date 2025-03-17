@@ -27,7 +27,7 @@ const VideoGrid = () => {
                 )}
             </AnimatePresence>
 
-            <div className="md:grid  text-[11px] flex flex-col md:grid-cols-3  gap-[2vw]">
+            <div className="md:grid  text-[11px] flex flex-col md:grid-cols-1  gap-[2vw]">
                 {videos.map((video) => (
                     <VideoCell
                         key={video.id}

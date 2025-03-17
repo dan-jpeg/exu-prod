@@ -23,9 +23,9 @@ const VideoPlayer = ({ video, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <div className="absolute top-8 left-0 w-full text-center font-alte-haas font-bold text-[12px]">
-                <div className="mb-2">{video.title}</div>
-                <div className="flex justify-center space-x-8">
+            <div className="absolute uppercase bottom-12 left-0 w-full text-center font-alte-haas font-bold text-[11px]">
+                <div className="mb-2 italic ">{video.title}</div>
+                <div className="flex justify-center space-x-6">
                     <span>{video.year}</span>
                     <span>{video.duration}</span>
                 </div>

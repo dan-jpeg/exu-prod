@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const VideoCell = ({ title, year, duration, thumbnail, onClick }) => {
     return (
         <div
-            className="grid grid-rows-[auto_1fr] pb-8 max-w-[210px] md:max-w-[600px] lg:max-w-[700px] cursor-zoom-in"
+            className="grid grid-rows-[auto_1fr] pb-8  max-w-[210px] md:max-w-[600px] lg:max-w-[700px] cursor-zoom-in"
             style={{ gridTemplateRows: "auto minmax(10px, auto)" }}
             onClick={onClick}
         >
@@ -21,7 +21,7 @@ const VideoCell = ({ title, year, duration, thumbnail, onClick }) => {
                 <img
                     src={thumbnail}
                     alt={title}
-                    className=" h-[2    0vw] md:h-[4vw] w-auto object-cover"
+                    className=" h-[20vw] md:h-[4vw] w-auto object-cover"
                     draggable="false"
                 />
             </div>
