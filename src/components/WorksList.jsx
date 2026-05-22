@@ -88,7 +88,7 @@ const WorkRow = ({ work }) => {
                         <img
                             src={displayImages[0]}
                             alt={`${work.title} 1`}
-                            className="h-[10vw] md:h-[5vw] w-auto object-cover cursor-zoom-in"
+                            className="h-[20vw] md:h-[5vw] w-auto object-cover cursor-zoom-in"
                             draggable="false"
                             onClick={() => handleImageClick(displayImages[0])}
                         />

@@ -149,7 +149,7 @@ const NewHome = ({ initialSection }) => {
     };
 
     return (
-        <div className="relative min-h-screen w-full overflow-x-hidden">
+        <div className="relative min-h-screen w-full overflow-x-clip">
             <div className="fixed inset-0 w-full h-full">
                 <VideoBackground/>
                 <div
@@ -164,56 +164,56 @@ const NewHome = ({ initialSection }) => {
 
             <div className="h-[calc(100vh-132px)] w-full"/>
 
-            <div className="text-[1vw] lg:text-[11px] relative bg-white min-h-screen w-full">
-                <div className="sticky top-0 z-50 bg-white">
-                    <div className="text-center py-8 font-alte-haas font-bold">
-                        <div className="mb-0">
-                            <span onClick={() => handleNavClick('index')}
-                                  className="mr-4 cursor-pointer hover:opacity-60">INDEX</span>
-                            {/*<span onClick={() => handleNavClick('contact')}*/}
-                            {/*      className="mr-4 cursor-pointer hover:opacity-60">CONTACT</span>*/}
-                            <a
-                                className="mr-4 cursor-pointer hover:opacity-60"
-                                href="https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/assets/Edie+X+Resume-1.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                CV
-                            </a>
-                            <span onClick={handleCopyEmail} className="mr-4 cursor-pointer hover:opacity-60">
-                                {emailCopied ? 'EMAIL COPIED :)' : 'EMAIL'}
-                            </span>
-                            <a
-                                href="https://www.instagram.com/e__xu/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mr-4 cursor-pointer hover:opacity-60"
-                            >
-                                INSTAGRAM
-                            </a>
-                            <span
-                                onClick={() => handleNavClick('videos')}
-                                className={`cursor-pointer hover:opacity-60 ${activeSection === 'videos' ? 'font-bold' : 'font-bold'}`}
-                            >
-                                VIDEO
-                            </span>
-                        </div>
-                        <div className="">
-                            <span
-                                onClick={() => handleNavClick('exhibitions')}
-                                className={`mr-4 cursor-pointer hover:opacity-60 ${activeSection === 'exhibitions' ? 'font-bold' : 'font-normal'}`}
-                            >
-                                Exhibition
-                            </span>
-                            <span
-                                onClick={() => handleNavClick('works')}
-                                className={`mr-4 cursor-pointer hover:opacity-60 ${activeSection === 'works' ? 'font-bold' : 'font-normal'}`}
-                            >
-                                Works
-                            </span>
+                <div className="text-[1vw] lg:text-[11px] relative bg-white min-h-screen w-full">
+                    <div className="sticky top-0 z-50 bg-white">
+                        <div className="text-center py-8 font-alte-haas font-bold">
+                            <div className="mb-0">
+                                <span onClick={() => handleNavClick('index')}
+                                      className="mr-4 cursor-pointer hover:opacity-60">INDEX</span>
+                                {/*<span onClick={() => handleNavClick('contact')}*/}
+                                {/*      className="mr-4 cursor-pointer hover:opacity-60">CONTACT</span>*/}
+                                <a
+                                    className="mr-4 cursor-pointer hover:opacity-60"
+                                    href="https://edie-xu-portfolio.s3.us-east-2.amazonaws.com/assets/Edie+X+Resume-1.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    CV
+                                </a>
+                                <span onClick={handleCopyEmail} className="mr-4 cursor-pointer hover:opacity-60">
+                                    {emailCopied ? 'EMAIL COPIED :)' : 'EMAIL'}
+                                </span>
+                                <a
+                                    href="https://www.instagram.com/e__xu/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="mr-4 cursor-pointer hover:opacity-60"
+                                >
+                                    INSTAGRAMM
+                                </a>
+                                <span
+                                    onClick={() => handleNavClick('videos')}
+                                    className={`cursor-pointer hover:opacity-60 ${activeSection === 'videos' ? 'font-bold' : 'font-bold'}`}
+                                >
+                                    VIDEO
+                                </span>
+                            </div>
+                            <div className="">
+                                <span
+                                    onClick={() => handleNavClick('exhibitions')}
+                                    className={`mr-4 cursor-pointer hover:opacity-60 ${activeSection === 'exhibitions' ? 'font-bold' : 'font-normal'}`}
+                                >
+                                    Exhibition
+                                </span>
+                                <span
+                                    onClick={() => handleNavClick('works')}
+                                    className={`mr-4 cursor-pointer hover:opacity-60 ${activeSection === 'works' ? 'font-bold' : 'font-normal'}`}
+                                >
+                                    Works
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 <AnimatePresence mode="wait">
                     {selectedExhibition ? (

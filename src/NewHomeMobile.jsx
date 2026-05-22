@@ -144,7 +144,7 @@ const NewHomeMobile = ({ initialSection }) => {
     };
 
     return (
-        <div className="relative min-h-screen w-full overflow-x-hidden">
+        <div className="relative min-h-screen w-full overflow-x-clip">
             {/* Video Background */}
             {/*<div className="fixed inset-0 w-full h-full">*/}
             {/*    <VideoBackground/>*/}
