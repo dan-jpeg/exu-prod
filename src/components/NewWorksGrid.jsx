@@ -7,7 +7,7 @@ import { FullscreenImage } from "@/components/WorksList.jsx";
 
 export const WorkDisplay = ({
                          work,
-                         heightArray = ['5vw', '5vw', '5vw', '5vw'],
+                         heightArray = ['7.5vw', '7.5vw', '7.5vw', '7.5vw'],
                          customComponents = [], // Array of custom components to display instead of fullscreen images
                          alternateLayout = false // New prop for alternate layout
                      }) => {
@@ -64,7 +64,7 @@ export const WorkDisplay = ({
             </AnimatePresence>
 
             {/* Title and details row */}
-            <div className="grid text-[1vw] lg:text-[10px] mb-[8vw] uppercase font-bold font-alte-haas opacity-80 grid-cols-6 w-full">
+            <div className="grid text-[1vw] lg:text-[10px] mb-[3.2vw] uppercase font-bold font-alte-haas opacity-80 grid-cols-6 w-full">
                 <div className="col-span-1 justify-self-start">
                     <span>{work.title}</span>
                 </div>
@@ -238,13 +238,13 @@ export const WorksGrid = ({onNavigate}) => {
 
             <WorkDisplay
                 work={selectedWorks[3]}
-                heightArray={['7vw', '7vw', '7vw', '7vw']}
+                heightArray={['10.5vw', '10.5vw', '10.5vw', '10.5vw']}
 
             />
 
             <WorkDisplay
                 work={selectedWorks[4]}
-                heightArray={['7vw', '7vw', '7vw', '7vw']}
+                heightArray={['10.5vw', '10.5vw', '10.5vw', '10.5vw']}
             />
 
             <WorkDisplay
